@@ -65,33 +65,34 @@
                 </nav>
                 <div id="itens">
                     <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg"></div>
+                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
                         <article class="textoNoticia">
                             <h1 class="tituloNoticia">Harry Potter</h1>
                             <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
                         </article>
                     </div>
                     <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg"></div>
+                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
                         <article class="textoNoticia">
                             <h1 class="tituloNoticia">Harry Potter</h1>
                             <p class="descricaoNoticia">á éíóúàèoasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
                         </article>
                     </div>
                     <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg"></div>
+                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
                         <article class="textoNoticia">
                             <h1 class="tituloNoticia">Harry Potter</h1>
                             <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
                         </article>
                     </div>
                     <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg"></div>
+                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
                         <article class="textoNoticia">
                             <h1 class="tituloNoticia">Harry Potter</h1>
                             <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
                         </article>
                     </div>
+                </div>
             </main>
             <footer id="rodape">
                 Todos os direitos reservados.

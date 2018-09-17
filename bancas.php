@@ -65,51 +65,47 @@
                 </nav>
                 <div id="itens">
                     <div class="quadroBanca">
-                        <div class="imagemMapa"><img src="imagens/mapa.png"></div>
+                        <div class="imagemMapa"><img src="imagens/mapa.png" alt="Vila Mariana"></div>
                         <div class="textoBanca">
                             <h1 class="tituloNoticia">Vila Mariana</h1>
                             <p>Banca Vila Mariana</p>
                             <p>Estado: SP</p>
                             <p>Cidade: São Paulo</p>
                             <p>Bairro: Vila Mariana</p>
-                            <p>Rua: Gandavo, nº 125</p>
-                            <p>Localizada em uma das ruas mais importantes do bairro, essa banca foi inaugurada em 1999.</p>
+                            <p>Rua Gandavo, nº 125</p>
                         </div>
                     </div>
                     <div class="quadroBanca">
                         <div class="imagemMapa"><script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script><div style='overflow:hidden;height:230px;width:280px;'><div id='gmap_canvas' style='height:230px;width:280px;'></div><div><small><a href="https://embedgooglemaps.com/it/">embedgooglemaps IT</a></small></div><div><small><a href="http://eurodisneyaanbiedingen.nl/">euro disney aanbiedingen | beste deals - book nu!</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:10,center:new google.maps.LatLng(38.7222524,-9.139336599999979),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(38.7222524,-9.139336599999979)});infowindow = new google.maps.InfoWindow({content:'<strong>Banca</strong><br>Sao Paulo, Brasil<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script></div>
                         <div class="textoBanca">
-                            <h1 class="tituloNoticia">Vila Mariana</h1>
-                            <p>Banca Vila Mariana</p>
+                            <h1 class="tituloNoticia">Carrão</h1>
+                            <p>Banca Carrão</p>
                             <p>Estado: SP</p>
                             <p>Cidade: São Paulo</p>
-                            <p>Bairro: Vila Mariana</p>
-                            <p>Rua: Gandavo, nº 125</p>
-                            <p>Localizada em uma das ruas mais importantes do bairro, essa banca foi inaugurada em 1999.</p>
+                            <p>Bairro: Carrão</p>
+                            <p>Rua Evangelina, nº 125</p>
                         </div>
                     </div>
                     <div class="quadroBanca">
-                        <div class="imagemMapa"><img src="imagens/mapa.png"></div>
+                        <div class="imagemMapa"><img src="imagens/mapa.png" alt="Tatuape"></div>
                         <div class="textoBanca">
-                            <h1 class="tituloNoticia">Vila Mariana</h1>
-                            <p>Banca Vila Mariana</p>
+                            <h1 class="tituloNoticia">Tatuapé</h1>
+                            <p>Banca Celso Garcia</p>
                             <p>Estado: SP</p>
                             <p>Cidade: São Paulo</p>
-                            <p>Bairro: Vila Mariana</p>
-                            <p>Rua: Gandavo, nº 125</p>
-                            <p>Localizada em uma das ruas mais importantes do bairro, essa banca foi inaugurada em 1999.</p>
+                            <p>Bairro: Parque São Jorge</p>
+                            <p>Avenida Celso Garcia, nº 3000</p>
                         </div>
                     </div>
                     <div class="quadroBanca">
-                        <div class="imagemMapa"><img src="imagens/mapa.png"></div>
+                        <div class="imagemMapa"><img src="imagens/mapa.png" alt="Centro"></div>
                         <div class="textoBanca">
-                            <h1 class="tituloNoticia">Vila Mariana</h1>
-                            <p>Banca Vila Mariana</p>
+                            <h1 class="tituloNoticia">Centro</h1>
+                            <p>Banca Sé</p>
                             <p>Estado: SP</p>
                             <p>Cidade: São Paulo</p>
-                            <p>Bairro: Vila Mariana</p>
-                            <p>Rua: Gandavo, nº 125</p>
-                            <p>Localizada em uma das ruas mais importantes do bairro, essa banca foi inaugurada em 1999.</p>
+                            <p>Bairro: Sé</p>
+                            <p>Praça da Sé, nº 20</p>
                         </div>
                     </div>
                 </div>
