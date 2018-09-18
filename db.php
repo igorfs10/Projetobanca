@@ -15,7 +15,5 @@
                     ('".$nome."', '".$telefone."', '".$celular."', '".$email."', '".$homepage."', '".$facebook."', '".$sugestao."', '".$informacao."', '".$sexo."', '".$profissao."');";
 
         mysqli_query($conexao, $sql);
-        
-        echo($sql);
     }
 ?>

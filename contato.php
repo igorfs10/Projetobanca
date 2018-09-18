@@ -86,15 +86,15 @@
                         <form method="POST" action="contato.php">
                             <h1>Contato</h1><br><br>
                             <p>Nome:*</p>
-                            <p><input type="text" size="50" name="txtNome"></p><br>
+                            <p><input type="text" size="50" name="txtNome" required></p><br>
                             <p>Telefone:</p>
                             <p><input type="text" size="50" name="txtTelefone"></p><br>
                             <p>Celular:*</p>
-                            <p><input type="text" size="50" name="txtCelular"></p><br>
+                            <p><input type="text" size="50" name="txtCelular" required></p><br>
                             <p>Email:*</p>
-                            <p><input type="email" size="50" name="txtEmail"></p><br>
+                            <p><input type="email" size="50" name="txtEmail" required></p><br>
                             <p>Homepage:</p>
-                            <p><input type="text" size="50" name="txtHomepage"></p><br>
+                            <p><input type="url" size="50" name="txtHomepage"></p><br>
                             <p>Link no Facebook:</p>
                             <p><input type="text" size="50" name="txtFacebook"></p><br>
                             <p>Sugestões/Críticas:</p>
@@ -103,8 +103,8 @@
                             <textarea rows="5" cols="50" name="txtInformacao"></textarea><br>
                             <p>Sexo:</p>
                             <p>
-                                <input type="radio" name="sexo" value="m"> Masculino
-                                <input type="radio" name="sexo" value="f"> Feminino
+                                <input type="radio" name="sexo" value="m" required> Masculino
+                                <input type="radio" name="sexo" value="f" required> Feminino
                             </p>
                             <p>Profissão:</p>
                             <p><input type="text" size="50"  name="txtProfissao"></p><br>
