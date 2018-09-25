@@ -28,8 +28,10 @@
 		</title>
 	</head>
 	<body>
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+        <script src="jquery/jquery-3.3.1.min.js"></script>
+        <script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+        <script src="slick/slick.min.js"></script>
+        <script src="javascript/validacao.js"></script>
         <header id="cabecalho">
             <div id="logo"><a href="index.php"><img src="imagens/logo.png" alt="Banca Bugs Bunny"></a></div>
             <nav id="menu">
@@ -60,11 +62,11 @@
                     Senha:
                 </div>
                 <div id="caixaLogin">
-                    <input type="text" id="entrar"><br>
-                    <input type="password" id="senha"><br>
+                    <input type="text" name="txtUsuario" id="entrar"><br>
+                    <input type="password" name="txtSenha" id="senha"><br>
                 </div>
                 <div id="botaoLogin">
-                    <input type="button" value="Entrar" onclick="logar()">
+                    <input type="submit" name="login" value="Entrar">
                 </div>
             </div>
         </header>
@@ -86,17 +88,17 @@
                         <form method="POST" action="contato.php">
                             <h1>Contato</h1><br><br>
                             <p>Nome:*</p>
-                            <p><input type="text" size="50" name="txtNome" required></p><br>
+                            <p><input type="text" maxlength="100" onkeypress="return validar(event, BLOQUEIA_NUMEROS, this)" size="50" name="txtNome" required></p><br>
                             <p>Telefone:</p>
-                            <p><input type="text" size="50" name="txtTelefone"></p><br>
+                            <p><input type="text" maxlength="15" onkeypress="return validar(event, BLOQUEIA_CARACTERES, this)" size="50" name="txtTelefone"></p><br>
                             <p>Celular:*</p>
-                            <p><input type="text" size="50" name="txtCelular" required></p><br>
+                            <p><input type="text" maxlength="15" onkeypress="return validar(event, BLOQUEIA_CARACTERES, this)" size="50" name="txtCelular" required></p><br>
                             <p>Email:*</p>
-                            <p><input type="email" size="50" name="txtEmail" required></p><br>
+                            <p><input type="email" maxlength="100" size="50" name="txtEmail" required></p><br>
                             <p>Homepage:</p>
-                            <p><input type="url" size="50" name="txtHomepage"></p><br>
+                            <p><input type="url" maxlength="100" size="50" name="txtHomepage"></p><br>
                             <p>Link no Facebook:</p>
-                            <p><input type="text" size="50" name="txtFacebook"></p><br>
+                            <p><input type="text" maxlength="100" size="50" name="txtFacebook"></p><br>
                             <p>Sugestões/Críticas:</p>
                             <textarea rows="5" cols="50" name="txtSugestao"></textarea><br>
                             <p>Informações do produto:</p>
@@ -107,7 +109,7 @@
                                 <input type="radio" name="sexo" value="f" required> Feminino
                             </p>
                             <p>Profissão:</p>
-                            <p><input type="text" size="50"  name="txtProfissao"></p><br>
+                            <p><input type="text" maxlength="100" size="50"  name="txtProfissao" required></p><br>
                             <p><input type="submit" name="btnEnviar"></p>
                         </form>
                     </div>
@@ -122,8 +124,6 @@
                 <div id="googleplus"><a href="http://plus.google.com"><img src="imagens/googleplus.png" alt="Google plus"></a></div>
                 <div id="facebook"><a href="http://facebook.com"><img src="imagens/facebook.png" alt="Facebook"></a></div>
             </div>
-        <script src="slick/slick.min.js"></script>
-        <script src="slider.js"></script>
-        <script src="javascript.js"></script>
+        <script src="javascript/slider.js"></script>
     </body>
 </html>

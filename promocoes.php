@@ -10,8 +10,9 @@
 		</title>
 	</head>
 	<body>
-    <script src="jquery/jquery-3.3.1.min.js"></script>
-    <script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+        <script src="jquery/jquery-3.3.1.min.js"></script>
+        <script src="jquery/jquery-migrate-1.4.1.min.js"></script>
+        <script src="slick/slick.min.js"></script>
         <header id="cabecalho">
             <div id="logo"><a href="index.php"><img src="imagens/logo.png" alt="Banca Bugs Bunny"></a></div>
             <nav id="menu">
@@ -42,11 +43,11 @@
                     Senha:
                 </div>
                 <div id="caixaLogin">
-                    <input type="text" id="entrar"><br>
-                    <input type="password" id="senha"><br>
+                    <input type="text" name="txtUsuario" id="entrar"><br>
+                    <input type="password" name="txtSenha" id="senha"><br>
                 </div>
                 <div id="botaoLogin">
-                    <input type="button" value="Entrar" onclick="logar()">
+                    <input type="submit" name="login" value="Entrar">
                 </div>
             </div>
         </header>
@@ -165,8 +166,6 @@
                 <div id="googleplus"><a href="http://plus.google.com"><img src="imagens/googleplus.png" alt="Google plus"></a></div>
                 <div id="facebook"><a href="http://facebook.com"><img src="imagens/facebook.png" alt="Facebook"></a></div>
             </div>
-        <script src="slick/slick.min.js"></script>
-        <script src="slider.js"></script>
-        <script src="javascript.js"></script>
+        <script src="javascript/slider.js"></script>
     </body>
 </html>
