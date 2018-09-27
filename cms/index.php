@@ -14,14 +14,18 @@
                 <div id="logo"><img src="icones/config.png"></div>
             </div>
             <div id="caixaOpcoes">
-                <div class="caixaItem">
-                    <img src="icones/config.png"><br>
-                    Admin Conteudo
-                </div>
-                <div class="caixaItem">
-                    <img src="icones/contato.png"><br>
-                    Admin Fale Conosco
-                </div>
+                <a href="index.php">
+                    <div class="caixaItem">
+                        <img src="icones/config.png"><br>
+                        Admin Conteudo
+                    </div>
+                </a>
+                <a href="faleconosco.php">
+                    <div class="caixaItem">
+                        <img src="icones/contato.png"><br>
+                        Admin Fale Conosco
+                    </div>
+                </a>
                 <div class="caixaItem">
                     <img src="icones/produtos.png"><br>
                     Admin Produtos
