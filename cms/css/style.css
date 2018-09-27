@@ -52,6 +52,15 @@
     max-height: 100px;
     max-width: 100px;
     margin-right: 0px;
+    transition: 0.2s;
+}
+
+#logo img:hover{
+    max-height: 100px;
+    max-width: 100px;
+    margin-right: 0px;
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 #caixaOpcoes{
@@ -73,10 +82,13 @@
     padding-top: 10px;
     padding-bottom: 10px;
     border-radius: 20px;
+    transition: 0.2s;
 }
 
 .caixaItem:hover{
-    background-color: #c7b800;
+    background-color: #ffff56;
+    transform: scale(1.1);
+    transition: 0.2s;
 }
 
 .caixaItem img{
@@ -91,9 +103,49 @@
 }
 
 #caixaConteudo{
-    height: 650px;
-    width: 800px;
-    background-color: red;
+    height: 600px;
+    width: 750px;
+    padding: 25px;
+    background-color: #555555;
+}
+
+.colunaConteudo{
+    height: 600px;
+    width: 375px;
+    float: left;
+}
+
+.caixaOpcao{
+    height: 140px;
+    width: 355px;
+    line-height: 140px;
+    margin-bottom: 10px;
+    background-color: #cccccc;
+    font-size: 30px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+
+.caixaOpcao:hover{
+    background-color: #ffff56;
+    font-weight: bold;
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+
+.imagemOpcao{
+    height: 120px;
+    width: 100px;
+    line-height: 140px;
+    padding-top: 20px;
+    margin-left: 10px;
+    margin-right: 20px;
+    float: left;
+}
+
+.imagemOpcao img{
+    height: 100px;
+    width: 100px;   
 }
 
 #rodape{
@@ -101,5 +153,8 @@
     width: 800px;
     border-bottom-left-radius: 55px;
     border-bottom-right-radius: 55px;
-    background-color: green;
+    background-color: #333333;
+    text-align: center;
+    line-height: 100px;
+    color: #ffffff;
 }
