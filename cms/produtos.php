@@ -1,3 +1,9 @@
+<?php
+include "db.php";
+
+$select = selectBanco();
+
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -44,33 +50,18 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=colunaConteudo>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        Fale conosco
+                <div class=caixaContato>
+                    <?php
+                    while($rsContatos = mysqli_fetch_array($select)){
+                    ?>
+                    <div class="contato">
+                        Nome: <span class="textoNegrito"><?php echo($rsContatos['nome'])?></span>
+                        <span class="direito"><img src="icones/zoom.png"></span>
+                        <br>
+                        Email: <span class="textoNegrito"><?php echo($rsContatos['email'])?></span>
+                        <span class="direito"><img src="icones/delete.png"></span>
                     </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                </div>
-                <div class=colunaConteudo>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
+                      <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

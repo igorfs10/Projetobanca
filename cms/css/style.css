@@ -10,6 +10,61 @@
     font-family: lato; 
     font-size: 20px;
 }
+/*-----CSS MODAL CONTATOS-----*/
+#modal{
+    width: 1000px;
+    height: 900px;
+    background-color: #cccccc;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 100px;
+}
+
+#container{
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    position: fixed;
+    z-index: 999;
+    display: none;
+}
+
+#dadosContatos{
+    border: solid 2px #ffea00;
+}
+
+.fechar{
+    font-family: monospace;
+    float: right;
+    color: #000000;
+    font-weight: bold;
+    transition: 0.5s;
+    font-size: 30px;
+}
+
+.fechar:hover{
+    color: #b00000;
+    transform: scale(1.3);
+    transition: 0.5s;
+}
+
+.fechar:active{
+    color: #f00000;
+    transition: 0.5;
+}
+
+.tituloDados{
+    text-align: center;
+}
+
+.linhaDados{
+    text-align: right;
+}
+
+.linhaDadosB{
+    text-align: left;
+}
+/*-----FIM CSS MODAL CONTATOS-----*/
 
 .textoGrande{
     font-size: 25px;
@@ -23,7 +78,6 @@
 #caixaPrincipal{
     height: 1000px;
     width: 800px;
-    margin-top: 20px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 60px;
@@ -61,6 +115,7 @@
     margin-right: 0px;
     transform: scale(1.1);
     transition: 0.2s;
+    cursor: pointer;
 }
 
 #caixaOpcoes{
@@ -90,6 +145,7 @@
     background-color: #ffff56;
     transform: scale(1.1);
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .caixaItem img{
@@ -132,6 +188,7 @@
     font-weight: bold;
     transform: scale(1.1);
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .imagemOpcao{
@@ -172,6 +229,7 @@
     background-color: #ffff56;
     font-weight: bold;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .direito{

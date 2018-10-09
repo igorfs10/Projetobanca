@@ -1,16 +1,14 @@
 <?php
+    include_once "conexao.php";
     function selectBanco(){
-        $host = "localhost";
-        $database = "mydb";
-        $user = "root";
-        $password = "bcd127";
-
-        if(!$conexao = mysqli_connect($host, $user, $password, $database)){
-            echo("Erro na conexão com banco de dados.");
-        }
-
         $sql = "SELECT * from tbl_contatos";
         
-        return mysqli_query($conexao, $sql);
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function deleteBanco($id){
+        $sql = "DELETE FROM tbl_contatos WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:faleconosco.php');
     }
 ?>

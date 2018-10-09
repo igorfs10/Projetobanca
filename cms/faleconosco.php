@@ -1,7 +1,15 @@
 <?php
-include "db.php";
+    include_once "db.php";
 
-$select = selectBanco();
+    $select = selectBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteBanco($codigo);
+        }
+    }
 
 ?>
 <!doctype html>
@@ -12,8 +20,51 @@ $select = selectBanco();
 		<title>
             CMS - Sistema De Gerenciamento De Site
 		</title>
+        <script src="js/jquery.js"></script>
+        <script>
+            $(document).ready(function(){
+
+                //Function para abrir a janela Modal
+                $(".visualizar").click(function(){
+                    //toogle, slideToogle, slideDown, slideUp, fadeIn, fadeOut
+                    $("#container").fadeIn(1100);
+                });
+            });
+            //Função para receber o ID do Registro e 
+            //descarregar na modal
+            function modal(idItem){
+                //Somente o ajax consegue forçar um POST ou GET
+                //para uma página sem precisar atualizar a página
+
+                /*
+                    type: - serve para especificar se é GET ou POST
+
+                    url: - serve para especificar a página que será requisitada
+
+                    data: serve para criar váriaveis que serão submetidas (GET/POST) 
+                    para a página requisitada
+
+                    success: caso toda a requisição seja realizada com exito, então 
+                    a function do success será chamada e através do parametro dados, 
+                    iremos descarregar na div (modal) o conteudo de dados
+                */
+                $.ajax({
+                    type: "POST",
+                    url: "modal.php",
+                    data:{idRegistro:idItem},
+                    success: function(dados){
+
+                        $('#modal').html(dados);
+                    }
+                })
+            }
+        </script>
 	</head>
 	<body>
+        <div id="container">
+            <div id="modal">
+            </div>
+        </div>
         <main id="caixaPrincipal">
             <div id="caixaLogo">
                 <span class="textoGrande">CMS</span> - Sistema De Gerenciamento do Site
@@ -32,14 +83,18 @@ $select = selectBanco();
                         Admin Fale Conosco
                     </div>
                 </a>
-                <div class="caixaItem">
-                    <img src="icones/produtos.png"><br>
-                    Admin Produtos
-                </div>
-                <div class="caixaItem">
-                    <img src="icones/admin.png"><br>
-                    Admin Usuario
-                </div>
+                <a href="produtos.php">
+                    <div class="caixaItem">
+                        <img src="icones/produtos.png"><br>
+                        Admin Produtos
+                    </div>
+                </a>
+                <a href="usuarios.php">
+                    <div class="caixaItem">
+                        <img src="icones/admin.png"><br>
+                        Admin Usuarios
+                    </div>
+                </a>
                 <div id="caixaUsuario">
                     Bem Vindo, Usuario.<br><br><br><br>
                     Logout
@@ -52,10 +107,10 @@ $select = selectBanco();
                     ?>
                     <div class="contato">
                         Nome: <span class="textoNegrito"><?php echo($rsContatos['nome'])?></span>
-                        <span class="direito"><img src="icones/zoom.png"></span>
+                        <span class="visualizar direito"><a href="#"><img src="icones/zoom.png" onclick="modal(<?php echo($rsContatos['id']) ?>)"></a></span>
                         <br>
                         Email: <span class="textoNegrito"><?php echo($rsContatos['email'])?></span>
-                        <span class="direito"><img src="icones/delete.png"></span>
+                        <span class="direito"><a href="faleconosco.php?modo=apagar&codigo=<?php echo($rsContatos['id'])?>"><img src="icones/delete.png"></a></span>
                     </div>
                       <?php } ?>
                 </div>
@@ -64,5 +119,6 @@ $select = selectBanco();
                 Desenvolvido por Igor
             </footer>
         </main>
+        <script src="js/javascript.js"></script>
     </body>
 </html>

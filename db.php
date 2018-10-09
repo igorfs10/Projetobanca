@@ -1,7 +1,7 @@
 <?php
     function insertBanco($nome, $telefone, $celular, $email, $homepage, $facebook, $sugestao, $informacao, $sexo, $profissao){
         $host = "localhost";
-        $database = "mydb";
+        $database = "db_banca";
         $user = "root";
         $password = "bcd127";
 
