@@ -47,30 +47,14 @@
                 <div class=colunaConteudo>
                     <div class="caixaOpcao">
                         <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        Fale conosco
+                        Usuários
                     </div>
                     <div class="caixaOpcao">
                         <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
+                        Niveis
                     </div>
                 </div>
                 <div class=colunaConteudo>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
                 </div>
             </div>
             <footer id="rodape">
