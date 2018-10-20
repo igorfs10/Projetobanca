@@ -12,9 +12,8 @@
 }
 /*-----CSS MODAL CONTATOS-----*/
 #modal{
-    width: 1000px;
-    height: 900px;
-    background-color: #cccccc;
+    width: 800px;
+    height: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
@@ -30,12 +29,15 @@
 }
 
 #dadosContatos{
-    border: solid 2px #ffea00;
+    border: solid 4px #333333;
+    border-radius: 20px;
+    background-color: #cccccc;
 }
 
 .fechar{
     font-family: monospace;
     float: right;
+    margin-right: 12px;
     color: #000000;
     font-weight: bold;
     transition: 0.5s;
@@ -55,10 +57,16 @@
 
 .tituloDados{
     text-align: center;
+    font-weight: bold;
 }
 
 .linhaDados{
-    text-align: right;
+    font-weight: bold;
+}
+
+.linhaDadosTexto{
+    font-weight: bold;
+    text-align: center;
 }
 
 .linhaDadosB{
