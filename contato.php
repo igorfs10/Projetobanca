@@ -15,6 +15,8 @@
         $profissao = $_POST["txtProfissao"];
         
         insertBanco($nome, $telefone, $celular, $email, $homepage, $facebook, $sugestao, $informacao, $sexo, $profissao);
+		
+		header("Location: contato.php");
     }
 ?>
 <html lang="pt-br">
@@ -103,12 +105,12 @@
                             <textarea rows="5" cols="50" name="txtSugestao"></textarea><br>
                             <p>Informações do produto:</p>
                             <textarea rows="5" cols="50" name="txtInformacao"></textarea><br>
-                            <p>Sexo:</p>
+                            <p>Sexo:*</p>
                             <p>
                                 <input type="radio" name="sexo" value="m" required> Masculino
                                 <input type="radio" name="sexo" value="f" required> Feminino
                             </p>
-                            <p>Profissão:</p>
+                            <p>Profissão:*</p>
                             <p><input type="text" maxlength="100" size="50"  name="txtProfissao" required></p><br>
                             <p><input type="submit" name="btnEnviar"></p>
                         </form>

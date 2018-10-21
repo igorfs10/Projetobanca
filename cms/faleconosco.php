@@ -7,10 +7,9 @@
 
         if($modo == "apagar"){
         $codigo = $_GET['codigo'];
-            deleteBanco($codigo);
+            deleteContatoBanco($codigo);
         }
     }
-
 ?>
 <!doctype html>
 <html lang="pt-br">

@@ -45,18 +45,14 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminusuario.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Usuários
-                        </div>
-                    </a>
-                    <a href="adminnivel.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Niveis
-                        </div>
-                    </a>
+                    <div class="caixaOpcao">
+                        <div class="imagemOpcao"><img src="icones/config.png"></div>
+                        Usuários
+                    </div>
+                    <div class="caixaOpcao">
+                        <div class="imagemOpcao"><img src="icones/config.png"></div>
+                        Niveis
+                    </div>
                 </div>
                 <div class=colunaConteudo>
                 </div>

@@ -2,7 +2,7 @@
     include_once('db.php');
     
     $codigo = $_POST['idRegistro'];
-    $select = selectUsuarioBanco($codigo);
+    $select = selectContatoBanco($codigo);
 
     if($rs=mysqli_fetch_array($select)){
         $nome = $rs["nome"];

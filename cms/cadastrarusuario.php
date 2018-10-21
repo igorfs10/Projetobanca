@@ -1,3 +1,22 @@
+<?php
+    include_once "db.php";
+    $selected = "";
+
+    if(isset($_POST["btnEnviar"])){
+        $nome = $_POST["txtNome"];
+        $senha = $_POST["txtSenha"];
+        $idNivel = $_POST["cbbNivel"];
+        
+        insertUsuarioBanco($nome, $senha, $idNivel);
+        
+        header("Location: adminusuario.php");
+    }
+
+    $select = selectNiveisBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -44,22 +63,24 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=colunaConteudo>
-                    <a href="adminusuario.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Usuários
-                        </div>
-                    </a>
-                    <a href="adminnivel.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Niveis
-                        </div>
-                    </a>
-                </div>
-                <div class=colunaConteudo>
-                </div>
+                <form method="POST" action="cadastrarusuario.php">
+                    Usuário:
+                    <input type="text" maxlength="15" name="txtNome" required>
+                    Senha:
+                    <input type="password" maxlength="10" name="txtSenha" required><br>
+                    Nível:
+                    <select name="cbbNivel" required>
+                        <option value="">Escolha uma opção</option>
+                        <?php
+                        while($rsNiveis = mysqli_fetch_array($select)){
+                        ?>
+                        <option value="<?php echo($rsNiveis['id'])?>"><?php echo($rsNiveis['nome'])?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" name="btnEnviar">
+                </form>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor
