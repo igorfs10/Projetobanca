@@ -1,3 +1,26 @@
+<?php
+    include_once "db.php";
+
+    $select = selectUsuariosBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteUsuarioBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarUsuarioBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarUsuarioBanco($codigo);
+        }
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -45,20 +68,35 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminusuario.php">
+                    <a href="cadastrarusuario.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Usuários
-                        </div>
-                    </a>
-                    <a href="adminnivel.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Niveis
+                             Novo Usuário
                         </div>
                     </a>
                 </div>
-                <div class=colunaConteudo>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsUsuarios = mysqli_fetch_array($select)){
+                        $ativo = $rsUsuarios['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsUsuarios['nome'])?>
+                            <span class="direito"><a href="adminusuario.php?modo=apagar&codigo=<?php echo($rsUsuarios['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarusuario.php?modo=editar&codigo=<?php echo($rsUsuarios['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="adminusuario.php?modo=desativar&codigo=<?php echo($rsUsuarios['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="adminusuario.php?modo=ativar&codigo=<?php echo($rsUsuarios['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

@@ -1,3 +1,26 @@
+<?php
+    include_once "db.php";
+
+    $select = selectNiveisBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteNivelBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarNivelBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarNivelBanco($codigo);
+        }
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -45,20 +68,35 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminusuario.php">
+                    <a href="cadastrarnivel.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Usuários
-                        </div>
-                    </a>
-                    <a href="adminnivel.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Niveis
+                             Novo Nível
                         </div>
                     </a>
                 </div>
-                <div class=colunaConteudo>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsNiveis = mysqli_fetch_array($select)){
+                        $ativo = $rsNiveis['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsNiveis['nome'])?>
+                            <span class="direito"><a href="adminnivel.php?modo=apagar&codigo=<?php echo($rsNiveis['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarnivel.php?modo=editar&codigo=<?php echo($rsNiveis['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="adminnivel.php?modo=desativar&codigo=<?php echo($rsNiveis['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="adminnivel.php?modo=ativar&codigo=<?php echo($rsNiveis['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

@@ -12,9 +12,8 @@
 }
 /*-----CSS MODAL CONTATOS-----*/
 #modal{
-    width: 1000px;
-    height: 900px;
-    background-color: #cccccc;
+    width: 800px;
+    height: 800px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 100px;
@@ -30,12 +29,15 @@
 }
 
 #dadosContatos{
-    border: solid 2px #ffea00;
+    border: solid 4px #333333;
+    border-radius: 20px;
+    background-color: #cccccc;
 }
 
 .fechar{
     font-family: monospace;
     float: right;
+    margin-right: 12px;
     color: #000000;
     font-weight: bold;
     transition: 0.5s;
@@ -55,10 +57,16 @@
 
 .tituloDados{
     text-align: center;
+    font-weight: bold;
 }
 
 .linhaDados{
-    text-align: right;
+    font-weight: bold;
+}
+
+.linhaDadosTexto{
+    font-weight: bold;
+    text-align: center;
 }
 
 .linhaDadosB{
@@ -166,10 +174,14 @@
     background-color: #555555;
 }
 
-.colunaConteudo{
+.colunaConteudo, .colunaConteudoContatoNivel{
     height: 600px;
     width: 375px;
     float: left;
+}
+
+.colunaConteudoContatoNivel{
+    overflow: auto;
 }
 
 .caixaOpcao{
@@ -181,6 +193,7 @@
     font-size: 30px;
     border-radius: 15px;
     transition: 0.2s;
+    color: #000000;
 }
 
 .caixaOpcao:hover{
@@ -232,10 +245,37 @@
     cursor: pointer;
 }
 
+.usuarioNivel{
+    height: 40px;
+    width: 350px;
+    line-height: 40px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+    background-color: #cccccc;
+    font-size: 20px;
+    border-radius: 15px;
+    transition: 0.2s;
+}
+
+.usuarioNivel:hover{
+    background-color: #ffff56;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
 .direito{
     float: right;
     margin-right: 10px;
     visibility: hidden;
+}
+
+.direito img{
+    height: 40px;
+    width: 40px;
+}
+
+.usuarioNivel:hover > .direito{
+    visibility:visible;
 }
 
 .contato:hover > .direito{
