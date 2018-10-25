@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
     include_once "db.php";
 
@@ -22,8 +21,6 @@
         }
     }
 ?>
-=======
->>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -71,7 +68,6 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-<<<<<<< HEAD
                     <a href="cadastrarnivel.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
@@ -101,18 +97,6 @@
                             ?>
                         </div>
                     <?php } ?>
-=======
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        Usuários
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        Niveis
-                    </div>
-                </div>
-                <div class=colunaConteudo>
->>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
                 </div>
             </div>
             <footer id="rodape">
