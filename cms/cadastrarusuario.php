@@ -1,6 +1,7 @@
 <?php
     include_once "db.php";
     $selected = "";
+<<<<<<< HEAD
     $botao = "Inserir";
     $nome = "";
     $senha = "";
@@ -40,6 +41,23 @@
     }
     
     $selectNivel = selectNiveisBanco();
+=======
+
+    if(isset($_POST["btnEnviar"])){
+        $nome = $_POST["txtNome"];
+        $senha = $_POST["txtSenha"];
+        $idNivel = $_POST["cbbNivel"];
+        
+        insertUsuarioBanco($nome, $senha, $idNivel);
+        
+        header("Location: adminusuario.php");
+    }
+
+    $select = selectNiveisBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+    }
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -89,13 +107,20 @@
             <div id="caixaConteudo">
                 <form method="POST" action="cadastrarusuario.php">
                     Usuário:
+<<<<<<< HEAD
                     <input type="text" maxlength="15" name="txtNome" value="<?php echo($nome)?>" required>
                     Senha:
                     <input type="password" maxlength="10" name="txtSenha" value="<?php echo($senha)?>" required><br>
+=======
+                    <input type="text" maxlength="15" name="txtNome" required>
+                    Senha:
+                    <input type="password" maxlength="10" name="txtSenha" required><br>
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
                     Nível:
                     <select name="cbbNivel" required>
                         <option value="">Escolha uma opção</option>
                         <?php
+<<<<<<< HEAD
                         while($rsNiveis = mysqli_fetch_array($selectNivel)){
                             if($idNivel == $rsNiveis['id']){
                                 $selected = "selected";
@@ -104,11 +129,20 @@
                             }
                         ?>
                         <option value="<?php echo($rsNiveis['id'])?>"<?php echo($selected)?>><?php echo($rsNiveis['nome'])?></option>
+=======
+                        while($rsNiveis = mysqli_fetch_array($select)){
+                        ?>
+                        <option value="<?php echo($rsNiveis['id'])?>"><?php echo($rsNiveis['nome'])?></option>
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
                         <?php
                         }
                         ?>
                     </select>
+<<<<<<< HEAD
                     <input type="submit" value="<?php echo($botao)?>"name="btnEnviar">
+=======
+                    <input type="submit" name="btnEnviar">
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
                 </form>
             </div>
             <footer id="rodape">

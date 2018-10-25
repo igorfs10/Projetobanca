@@ -24,6 +24,7 @@
         return mysqli_query(conexaoDb(), $sql);
     }
 
+<<<<<<< HEAD
     function selectUsuarioBanco($id){
         $sql = "SELECT * from tbl_usuarios WHERE id=". $id;
         
@@ -36,6 +37,8 @@
         echo($sql);
     }
 
+=======
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
     function deleteUsuarioBanco($id){
         $sql = "DELETE FROM tbl_usuarios WHERE id= " . $id;
         mysqli_query(conexaoDb(), $sql);
@@ -61,6 +64,11 @@
                     ('".$nome."', '".$senha."', ".$idNivel.", 1);";
 
         mysqli_query(conexaoDb(), $sql);
+<<<<<<< HEAD
+=======
+        
+        echo($sql);
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
     }
     
     function selectNiveisBanco(){
@@ -68,6 +76,7 @@
         
         return mysqli_query(conexaoDb(), $sql);
     }
+<<<<<<< HEAD
 
     function selectNivelBanco($id){
         $sql = "SELECT * from tbl_niveis WHERE id=" . $id;
@@ -112,4 +121,6 @@
     }
 
     
+=======
+>>>>>>> 98ffbee75d7c9b22673614a6a5d586350ca5d2b2
 ?>
