@@ -83,8 +83,6 @@
                     ('".$nome."', 1);";
 
         mysqli_query(conexaoDb(), $sql);
-        
-        echo($sql);
     }
     
     function updateNivelBanco($nome, $id){
@@ -112,4 +110,49 @@
     }
 
     
+
+
+    function selectBancasBanco(){
+        $sql = "SELECT * from tbl_bancas";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function deleteBancaBanco($id){
+        $sql = "DELETE FROM tbl_bancas WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminbanca.php');
+    }
+
+    function ativarBancaBanco($id){
+        $sql = "UPDATE tbl_bancas SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminbanca.php');
+    }
+
+    function desativarBancaBanco($id){
+        $sql = "UPDATE tbl_bancas SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminbanca.php');
+    }
+
+    function updateBancaBanco($nome, $telefone, $endereco, $id){
+        $sql = "UPDATE tbl_bancas SET nome = '". $nome ."', telefone = '". $telefone ."', endereco = '". $endereco ."'  WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+    }
+    
+    function selectBancaBanco($id){
+        $sql = "SELECT * from tbl_bancas WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function insertBancaBanco($nome, $telefone, $endereco){
+        $sql = "INSERT INTO tbl_bancas
+                    (nome, telefone, endereco, ativo)
+                    VALUES
+                    ('".$nome."', '".$telefone."', '".$endereco."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
 ?>

@@ -14,7 +14,7 @@
         $sexo = $_POST["sexo"];
         $profissao = $_POST["txtProfissao"];
         
-        insertBanco($nome, $telefone, $celular, $email, $homepage, $facebook, $sugestao, $informacao, $sexo, $profissao);
+        insertContato($nome, $telefone, $celular, $email, $homepage, $facebook, $sugestao, $informacao, $sexo, $profissao);
 		
 		header("Location: contato.php");
     }

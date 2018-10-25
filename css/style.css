@@ -156,6 +156,7 @@
     width: 1000px;
     height: 1000px;
     float: left;
+    overflow: auto;
 }
 
 .item{
@@ -265,29 +266,18 @@
 }
 
 .quadroBanca{
-    width: 998px;
-    height: 248px;
+    width: 958px;
+    height: 148px;
     border: 1px solid #c6a700;
     border-radius: 2px;
 }
 
-.imagemMapa{
-    width: 280px;
-    height: 230px;
-    padding: 10px;
-    float: left;
-}
-
-.imagemMapa img{
-    width: 280px;
-    height: 230px;
-}
-
 .textoBanca{
-    width: 670px;
-    height: 228px;
-    padding: 10px;
-    float: left;
+    width: 988px;
+    height: 128px;
+    padding: 5px;
+    text-align: center;
+    font-size: 20px;
 }
 
 #areaContato{

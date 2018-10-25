@@ -1,3 +1,26 @@
+<?php
+    include_once "db.php";
+
+    $select = selectBancasBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteBancaBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarBancaBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarBancaBanco($codigo);
+        }
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -45,22 +68,35 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminbanca.php">
+                    <a href="cadastrarbanca.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Bancas
+                             Nova Banca
                         </div>
                     </a>
                 </div>
-                <div class=colunaConteudo>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
-                    <div class="caixaOpcao">
-                        <div class="imagemOpcao"><img src="icones/config.png"></div>
-                        xxxxxxxxxxx
-                    </div>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsBancas = mysqli_fetch_array($select)){
+                        $ativo = $rsBancas['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsBancas['nome'])?>
+                            <span class="direito"><a href="adminbanca.php?modo=apagar&codigo=<?php echo($rsBancas['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarbanca.php?modo=editar&codigo=<?php echo($rsBancas['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="adminbanca.php?modo=desativar&codigo=<?php echo($rsBancas['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="adminbanca.php?modo=ativar&codigo=<?php echo($rsBancas['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

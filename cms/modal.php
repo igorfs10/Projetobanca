@@ -109,9 +109,7 @@
             </tr>
             <tr>
                 <td class="linhaDadosTexto" colspan="2">
-                    <textarea rows="4" cols="60" disabled>
-                        <?php echo($sugestao) ?>
-                    </textarea>
+                    <textarea rows="4" cols="60" disabled><?php echo($sugestao) ?></textarea>
                 </td>
             </tr>
             <tr>
@@ -121,9 +119,7 @@
             </tr>
             <tr>
                 <td class="linhaDadosTexto" colspan="2">
-                    <textarea rows="4" cols="60" disabled>
-                        <?php echo($informacao) ?>
-                    </textarea>
+                    <textarea rows="4" cols="60" disabled><?php echo($informacao) ?></textarea>
                 </td>
             </tr>
         </table>
