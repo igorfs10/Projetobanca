@@ -43,6 +43,7 @@
                     </li>
                 </ul>
             </nav>
+            <form method="POST" action="index.php">
             <div id="login">
                 <div id="txtLogin">
                     Usuário:<br>
@@ -56,6 +57,7 @@
                     <input type="submit" name="login" value="Entrar">
                 </div>
             </div>
+            </form>
         </header>
         <div id="caixaEspecial"></div>
         <div id="conteudoPrincipal">
