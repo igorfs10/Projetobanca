@@ -1,3 +1,8 @@
+<?php
+    include_once "db.php";
+
+    $select = selectCelebridade();
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -65,46 +70,15 @@
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
                 <div id="itens">
+				<?php $rsCelebridade = mysqli_fetch_array($select);?>
                     <div id="caixaCelebridade">
                         <div id="imagemCelebridade">
-                            <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
+                            <img src="cms/<?php echo($rsCelebridade["imagem"])?>">
                         </div>
                         <article id="textoCelebridade">
-                            <h2>Rodrigo Santoro</h2>
-                            Rodrigo Junqueira Reis Santoro é um ator brasileiro. Conhecido no Brasil por participações em novelas na televisão, tornou-se conhecido internacionalmente por sua atuação nas séries de televisão Lost e Westworld. Conhecido também por viver Xerxes I em 300 e no filme 300 – A Ascensão do Império
+                            <h2><?php echo($rsCelebridade["nome"])?></h2>
+                            <?php echo($rsCelebridade["sobre"])?>
                         </article>
-                    </div>
-                    <div id="caixaCelebridadePassado">
-                        <div class="celebridadePassada">
-                            <div class="tituloCelebridadePassada">Rodrigo Santoro</div>
-                            <div class="imagemCelebridadePassada">
-                                <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
-                            </div>
-                        </div>
-                        <div class="celebridadePassada">
-                            <div class="tituloCelebridadePassada">Rodrigo Santoro</div>
-                            <div class="imagemCelebridadePassada">
-                                <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
-                            </div>
-                        </div>
-                        <div class="celebridadePassada">
-                            <div class="tituloCelebridadePassada">Rodrigo Santoro</div>
-                            <div class="imagemCelebridadePassada">
-                                <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
-                            </div>
-                        </div>
-                        <div class="celebridadePassada">
-                            <div class="tituloCelebridadePassada">Rodrigo Santoro</div>
-                            <div class="imagemCelebridadePassada">
-                                <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
-                            </div>
-                        </div>
-                        <div class="celebridadePassada">
-                            <div class="tituloCelebridadePassada">Rodrigo Santoro</div>
-                            <div class="imagemCelebridadePassada">
-                                <img src="imagens/celebridade.jpg" alt="Rodrigo Santoro">
-                            </div>
-                        </div>
                     </div>
                 </div>
             </main>

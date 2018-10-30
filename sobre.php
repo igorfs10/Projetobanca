@@ -1,3 +1,8 @@
+<?php
+    include_once "db.php";
+
+    $select = selectSobre();
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -65,10 +70,11 @@
                     <a href=""><div class="itemCategoria">Item1</div></a>
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
+				<?php $rsSobre = mysqli_fetch_array($select);?>
                 <div id="itens">
                     <div id="sobre">
-                        <h1 id="tituloSobre">Banca do José</h1>
-                        <p id="textoSobre">A Banca do josé começo em 1895, quando o José Silva resolveu abrir uma banca de jornal.</p>
+                        <h1 id="tituloSobre"><?php echo($rsSobre["nome"])?></h1>
+                        <p id="textoSobre"><?php echo($rsSobre["sobre"])?></p>
                     </div>
                 </div>
             </main>

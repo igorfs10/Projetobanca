@@ -22,4 +22,22 @@
         $sql = "SELECT * FROM tbl_bancas";
         return mysqli_query(conexaoDb(), $sql);
     }
+	
+	function selectNoticias(){
+        $sql = "SELECT * from tbl_noticias";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+	
+	function selectCelebridade(){
+        $sql = "SELECT * from tbl_celebridades WHERE id= 1";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+	
+	function selectSobre(){
+        $sql = "SELECT * from tbl_sobre WHERE id= 1";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
 ?>

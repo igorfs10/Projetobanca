@@ -1,3 +1,9 @@
+<?php
+    include_once "db.php";
+
+    $select = selectNoticias();
+?>
+
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -65,34 +71,22 @@
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
                 <div id="itens">
+				<?php
+                        while($rsNoticias = mysqli_fetch_array($select)){
+                        $ativo = $rsNoticias["ativo"];
+                            if($ativo){
+                    ?>
                     <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
+                        <div class="imagemNoticia"><img src="cms/<?php echo($rsNoticias["imagem"])?>" alt=""></div>
                         <article class="textoNoticia">
-                            <h1 class="tituloNoticia">Harry Potter</h1>
-                            <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
+                            <h1 class="tituloNoticia"><?php echo($rsNoticias["titulo"])?></h1>
+                            <p class="descricaoNoticia"><?php echo($rsNoticias["noticia"])?></p>
                         </article>
                     </div>
-                    <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
-                        <article class="textoNoticia">
-                            <h1 class="tituloNoticia">Harry Potter</h1>
-                            <p class="descricaoNoticia">á éíóúàèoasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
-                        </article>
-                    </div>
-                    <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
-                        <article class="textoNoticia">
-                            <h1 class="tituloNoticia">Harry Potter</h1>
-                            <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
-                        </article>
-                    </div>
-                    <div class="quadroNoticia">
-                        <div class="imagemNoticia"><img src="imagens/livro.jpg" alt=""></div>
-                        <article class="textoNoticia">
-                            <h1 class="tituloNoticia">Harry Potter</h1>
-                            <p class="descricaoNoticia">oasidh oasd oasihdoaish doais hdasi asodhaosidh oasidoaishd oashi doa shiosd ihaso ihd aosidh aosi dhoasi hdo aishd oashdoa shdo aihsdoasi hdaosidh  asdoih dasoiash oi dahsosidh oasidhoashdoash daosdih</p>
-                        </article>
-                    </div>
+					<?php 
+                            }
+                        }
+                    ?>
                 </div>
             </main>
             <footer id="rodape">

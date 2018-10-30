@@ -102,9 +102,9 @@
                             <p>Link no Facebook:</p>
                             <p><input type="text" maxlength="100" size="50" name="txtFacebook"></p><br>
                             <p>Sugestões/Críticas:</p>
-                            <textarea rows="5" cols="50" name="txtSugestao"></textarea><br>
+                            <textarea rows="5" cols="50" name="txtSugestao"  maxlength="250"></textarea><br>
                             <p>Informações do produto:</p>
-                            <textarea rows="5" cols="50" name="txtInformacao"></textarea><br>
+                            <textarea rows="5" cols="50" name="txtInformacao"  maxlength="250"></textarea><br>
                             <p>Sexo:*</p>
                             <p>
                                 <input type="radio" name="sexo" value="m" required> Masculino

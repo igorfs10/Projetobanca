@@ -74,6 +74,30 @@
 }
 /*-----FIM CSS MODAL CONTATOS-----*/
 
+#visualizarNoticia{
+    width: 170px;
+    height: 230px;
+}
+
+#visualizarNoticia img{
+    max-width: 170px;
+    max-height: 230px;
+}
+
+#visualizarCelebridade{
+    width: 150px;
+    height: 300px;
+}
+
+#visualizarCelebridade img{
+    max-width: 150px;
+    max-height: 300px;
+}
+
+#uploadFoto{
+    visibility: hidden;
+}
+
 .textoGrande{
     font-size: 25px;
     font-weight: bold;

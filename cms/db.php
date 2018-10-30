@@ -1,5 +1,7 @@
 <?php
     include_once "conexao.php";
+
+    // Contato
     function selectBanco(){
         $sql = "SELECT * from tbl_contatos";
         
@@ -18,6 +20,8 @@
         header('location:faleconosco.php');
     }
 
+    
+    //Usuario
     function selectUsuariosBanco(){
         $sql = "SELECT * from tbl_usuarios";
         
@@ -63,6 +67,8 @@
         mysqli_query(conexaoDb(), $sql);
     }
     
+    
+    //Nivel
     function selectNiveisBanco(){
         $sql = "SELECT * from tbl_niveis";
         
@@ -111,7 +117,7 @@
 
     
 
-
+    //Banca
     function selectBancasBanco(){
         $sql = "SELECT * from tbl_bancas";
         
@@ -155,4 +161,76 @@
 
         mysqli_query(conexaoDb(), $sql);
     }
+
+
+    //Noticia
+    function selectNoticiasBanco(){
+        $sql = "SELECT * from tbl_noticias";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function ativarNoticiaBanco($id){
+        $sql = "UPDATE tbl_noticias SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminnoticia.php');
+    }
+
+    function desativarNoticiaBanco($id){
+        $sql = "UPDATE tbl_noticias SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminnoticia.php');
+    }
+
+    function deleteNoticiaBanco($id){
+        $sql = "DELETE FROM tbl_noticias WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminnoticia.php');
+    }
+
+    function selectNoticiaBanco($id){
+        $sql = "SELECT * from tbl_noticias WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function insertNoticiaBanco($titulo, $noticia, $imagem){
+        $sql = "INSERT INTO tbl_noticias
+                    (titulo, noticia, imagem, ativo)
+                    VALUES
+                    ('".$titulo."', '".$noticia."', '".$imagem."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    function updateNoticiaBanco($titulo, $noticia, $imagem, $id){
+        $sql = "UPDATE tbl_noticias SET titulo = '". $titulo ."', noticia = '". $noticia ."', imagem = '". $imagem ."'  WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+
+    //Celebridade
+    function updateCelebridadeBanco($nome, $sobre, $imagem){
+        $sql = "UPDATE tbl_celebridades SET nome = '". $nome ."', sobre = '". $sobre ."', imagem = '". $imagem ."'  WHERE id= 1";
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    function selectCelebridadeBanco(){
+        $sql = "SELECT * from tbl_celebridades WHERE id= 1";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    //Sobre
+    function updateSobreBanco($nome, $sobre){
+        $sql = "UPDATE tbl_sobre SET nome = '". $nome ."', sobre = '". $sobre ."' WHERE id= 1";
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    function selectSobreBanco(){
+        $sql = "SELECT * from tbl_sobre WHERE id= 1";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+    
 ?>

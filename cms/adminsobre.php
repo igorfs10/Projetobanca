@@ -1,3 +1,19 @@
+<?php
+    include_once "db.php";
+    $nome = "";
+    $sobre = "";
+
+    if(isset($_POST["btnEnviar"])){
+        $nome = $_POST["txtNome"];
+        $sobre = $_POST["txtSobre"];
+        updateSobreBanco($nome, $sobre);       
+        header("Location: index.php");
+    }
+    $select = selectSobreBanco();
+    $rsSobre = mysqli_fetch_array($select);
+    $nome = $rsSobre["nome"];
+    $sobre = $rsSobre["sobre"];
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -44,32 +60,13 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=colunaConteudo>
-                    <a href="adminsobre.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Sobre
-                        </div>
-                    </a>
-                    <a href="adminbanca.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Bancas
-                        </div>
-                    </a>
-                    <a href="adminnoticia.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Notícias
-                        </div>
-                    </a>
-                    <a href="admincelebridade.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Celebridades
-                        </div>
-                    </a>
-                </div>
+                <form method="POST" action="adminsobre.php">
+                    Nome:
+                    <input type="text" maxlength="100" value="<?php echo($nome) ?>"name="txtNome" required><br>
+                    Sobre:<br>
+                    <textarea rows="4" cols="70" name="txtSobre" maxlength="400" required><?php echo($sobre) ?></textarea><br>
+                    <input type="submit" name="btnEnviar">
+                </form>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor

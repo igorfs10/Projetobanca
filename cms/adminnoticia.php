@@ -1,3 +1,26 @@
+<?php
+    include_once "db.php";
+
+    $select = selectNoticiasBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteNoticiaBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarNoticiaBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarNoticiaBanco($codigo);
+        }
+    }
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -45,30 +68,35 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminsobre.php">
+                    <a href="cadastrarnoticia.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Sobre
+                             Nova Notícia
                         </div>
                     </a>
-                    <a href="adminbanca.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Bancas
+                </div>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsNoticias = mysqli_fetch_array($select)){
+                        $ativo = $rsNoticias['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsNoticias['titulo'])?>
+                            <span class="direito"><a href="adminnoticia.php?modo=apagar&codigo=<?php echo($rsNoticias['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarnoticia.php?modo=editar&codigo=<?php echo($rsNoticias['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="adminnoticia.php?modo=desativar&codigo=<?php echo($rsNoticias['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="adminnoticia.php?modo=ativar&codigo=<?php echo($rsNoticias['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
                         </div>
-                    </a>
-                    <a href="adminnoticia.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Notícias
-                        </div>
-                    </a>
-                    <a href="admincelebridade.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Celebridades
-                        </div>
-                    </a>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">
