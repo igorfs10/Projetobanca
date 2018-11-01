@@ -40,4 +40,10 @@
         
         return mysqli_query(conexaoDb(), $sql);
     }
+    
+    function selectUsuarios(){
+        $sql = "SELECT * from tbl_usuarios";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
 ?>

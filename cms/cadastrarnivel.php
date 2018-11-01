@@ -1,8 +1,12 @@
 <?php
     include_once "db.php";
+	session_start();
+    $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
+    $rsLogado = mysqli_fetch_array($selectLogin);
+    $nomeLogado = $rsLogado["nome"];
+	
     $botao = "Inserir";
     $nome = "";
-    session_start();
 
     if(isset($_POST["btnEnviar"])){
         $acao = $_POST["btnEnviar"];
@@ -70,8 +74,8 @@
                     </div>
                 </a>
                 <div id="caixaUsuario">
-                    Bem Vindo, Usuario.<br><br><br><br>
-                    Logout
+                    Bem Vindo, <?php echo($nomeLogado)?>.<br><br><br><br>
+                    <a href="../login.php?modo=logout"><span class="branco">Logout</span></a>
                 </div>
             </div>
             <div id="caixaConteudo">

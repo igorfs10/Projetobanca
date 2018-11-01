@@ -10,6 +10,11 @@
     font-family: lato; 
     font-size: 20px;
 }
+
+.branco{
+    color: #cccccc;
+}
+
 /*-----CSS MODAL CONTATOS-----*/
 #modal{
     width: 800px;

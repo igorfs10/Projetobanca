@@ -58,7 +58,7 @@
                     </li>
                 </ul>
             </nav>
-            <form method="POST" action="index.php">
+            <form method="POST" action="login.php">
             <div id="login">
                 <div id="txtLogin">
                     Usuário:<br>
