@@ -4,19 +4,26 @@
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
-    $nome = "";
-    $sobre = "";
 
-    if(isset($_POST["btnEnviar"])){
-        $nome = $_POST["txtNome"];
-        $sobre = $_POST["txtSobre"];
-        updateSobreBanco($nome, $sobre);       
-        header("Location: index.php");
+    $select = selectSobresBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteSobreBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarSobreBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarSobreBanco($codigo);
+        }
     }
-    $select = selectSobreBanco();
-    $rsSobre = mysqli_fetch_array($select);
-    $nome = $rsSobre["nome"];
-    $sobre = $rsSobre["sobre"];
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -64,13 +71,36 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <form method="POST" action="adminsobre.php">
-                    Nome:
-                    <input type="text" maxlength="100" value="<?php echo($nome) ?>"name="txtNome" required><br>
-                    Sobre:<br>
-                    <textarea rows="4" cols="70" name="txtSobre" maxlength="400" required><?php echo($sobre) ?></textarea><br>
-                    <input type="submit" name="btnEnviar">
-                </form>
+                <div class=colunaConteudo>
+                    <a href="cadastrarsobre.php">
+                        <div class="caixaOpcao">
+                             &nbsp;&nbsp; Novo Sobre
+                        </div>
+                    </a>
+                </div>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsSobre = mysqli_fetch_array($select)){
+                        $ativo = $rsSobre['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsSobre['nome'])?>
+                            <span class="direito"><a href="adminsobre.php?modo=apagar&codigo=<?php echo($rsSobre['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarsobre.php?modo=editar&codigo=<?php echo($rsSobre['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="adminsobre.php?modo=desativar&codigo=<?php echo($rsSobre['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="adminsobre.php?modo=ativar&codigo=<?php echo($rsSobre['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    <?php } ?>
+                </div>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor

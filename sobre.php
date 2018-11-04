@@ -1,7 +1,7 @@
 <?php
     include_once "db.php";
 
-    $select = selectSobre();
+    $select = selectSobres();
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -72,12 +72,20 @@
                     <a href=""><div class="itemCategoria">Item1</div></a>
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
-				<?php $rsSobre = mysqli_fetch_array($select);?>
                 <div id="itens">
-                    <div id="sobre">
-                        <h1 id="tituloSobre"><?php echo($rsSobre["nome"])?></h1>
-                        <p id="textoSobre"><?php echo($rsSobre["sobre"])?></p>
+				<?php
+                        while($rsSobre = mysqli_fetch_array($select)){
+                        $ativo = $rsSobre["ativo"];
+                            if($ativo){
+                    ?>
+                    <div class="sobre">
+                        <h1><?php echo($rsSobre["nome"])?></h1>
+                        <p><?php echo($rsSobre["sobre"])?></p>
                     </div>
+					<?php 
+                            }
+                        }
+                    ?>
                 </div>
             </main>
             <footer id="rodape">

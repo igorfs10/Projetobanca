@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.12, for Win32 (AMD64)
 --
 -- Host: localhost    Database: db_banca
 -- ------------------------------------------------------
--- Server version	5.6.10-log
+-- Server version	5.7.23-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -56,7 +56,7 @@ CREATE TABLE `tbl_celebridades` (
   `imagem` varchar(250) NOT NULL,
   `ativo` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -65,7 +65,7 @@ CREATE TABLE `tbl_celebridades` (
 
 LOCK TABLES `tbl_celebridades` WRITE;
 /*!40000 ALTER TABLE `tbl_celebridades` DISABLE KEYS */;
-INSERT INTO `tbl_celebridades` VALUES (1,'Rodrigo Santoro','asuighdasidhiuasdhiashdiaus','arquivos/02c12dcce415f688b658df4628244a1b.jpg',1);
+INSERT INTO `tbl_celebridades` VALUES (1,'Rodrigo Santoro','asuighdasidhiuasdhiashdiaus','arquivos/02c12dcce415f688b658df4628244a1b.jpg',1),(3,'Manoel','dasuidiasuhd iauhdiashdisuahd iasdhi asdiuashdiasdhiasu dias diasd ias di hsiasdhi as diaus aiu dhais iashsda','arquivos/4138bdf0358cefa2e939732db9e52b0b.png',1);
 /*!40000 ALTER TABLE `tbl_celebridades` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,8 +165,9 @@ CREATE TABLE `tbl_sobre` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
   `sobre` longtext NOT NULL,
+  `ativo` int(11) NOT NULL,
   PRIMARY KEY (`id`,`nome`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +176,7 @@ CREATE TABLE `tbl_sobre` (
 
 LOCK TABLES `tbl_sobre` WRITE;
 /*!40000 ALTER TABLE `tbl_sobre` DISABLE KEYS */;
-INSERT INTO `tbl_sobre` VALUES (1,'Woodpecker','orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s wi');
+INSERT INTO `tbl_sobre` VALUES (1,'Woodpecker','orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s wi',1),(2,'Emanuel','isdiuas hdiuash diuashdiuthesh diheyahsdiashi auishasi udhmanisau duashiahiusahiasu',1),(3,'Luis Luis','udhaiusd hiusahdiasu dhiauhdiasuhd iasuhdiuashdiuasdhiausdhaisudh asiudh aiusdh iasudhiausdhiuasdhia sdhiasu dhasuihdiash diash diuash diashdiuha siudhas iduhasiud ahsiudh asidu hasiudhaisu diuash diadiasjd aoisdj oaisdjoiasjdoiasodasjusd hauish dauishd asuid hiasudha isudhaisud hia',1),(4,'Manoel','jsahdjashdiuahwiuhiquwheiuah dushdiusdhfius idufshfsdiuhfiweu iuhif weifhweir weiruhweiurh weiurhweiurhwei rwehiurhweriuweh riwuerhweiur hwierhfbgjsxbfnkjs djfskj',1),(5,'joisajoidasjda','sasjdnaskjdndajnsdkjasasjkdnklasj dajsk ndalksj dlkasjdiuashdi uas hdiuas hiudah s ',1);
 /*!40000 ALTER TABLE `tbl_sobre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -218,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-30 11:09:55
+-- Dump completed on 2018-11-04 18:56:15

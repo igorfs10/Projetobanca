@@ -1,7 +1,7 @@
 <?php
     include_once "db.php";
 
-    $select = selectCelebridade();
+    $select = selectCelebridades();
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -72,16 +72,24 @@
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
                 <div id="itens">
-				<?php $rsCelebridade = mysqli_fetch_array($select);?>
+				<?php
+                        while($rsCelebridades = mysqli_fetch_array($select)){
+                        $ativo = $rsCelebridades["ativo"];
+                            if($ativo){
+                    ?>
                     <div id="caixaCelebridade">
                         <div id="imagemCelebridade">
-                            <img src="cms/<?php echo($rsCelebridade["imagem"])?>">
+                            <img src="cms/<?php echo($rsCelebridades["imagem"])?>">
                         </div>
                         <article id="textoCelebridade">
-                            <h2><?php echo($rsCelebridade["nome"])?></h2>
-                            <?php echo($rsCelebridade["sobre"])?>
+                            <h2><?php echo($rsCelebridades["nome"])?></h2>
+                            <?php echo($rsCelebridades["sobre"])?>
                         </article>
                     </div>
+					<?php 
+                            }
+                        }
+                    ?>
                 </div>
             </main>
             <footer id="rodape">

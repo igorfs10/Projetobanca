@@ -210,27 +210,92 @@
 
 
     //Celebridade
-    function updateCelebridadeBanco($nome, $sobre, $imagem){
-        $sql = "UPDATE tbl_celebridades SET nome = '". $nome ."', sobre = '". $sobre ."', imagem = '". $imagem ."'  WHERE id= 1";
-        mysqli_query(conexaoDb(), $sql);
-    }
-
-    function selectCelebridadeBanco(){
-        $sql = "SELECT * from tbl_celebridades WHERE id= 1";
+    function selectCelebridadesBanco(){
+        $sql = "SELECT * from tbl_celebridades";
         
         return mysqli_query(conexaoDb(), $sql);
     }
 
-    //Sobre
-    function updateSobreBanco($nome, $sobre){
-        $sql = "UPDATE tbl_sobre SET nome = '". $nome ."', sobre = '". $sobre ."' WHERE id= 1";
+    function ativarCelebridadeBanco($id){
+        $sql = "UPDATE tbl_celebridades SET ativo = 1 WHERE id= " . $id;
         mysqli_query(conexaoDb(), $sql);
+        header('location:admincelebridade.php');
     }
 
-    function selectSobreBanco(){
-        $sql = "SELECT * from tbl_sobre WHERE id= 1";
+    function desativarCelebridadeBanco($id){
+        $sql = "UPDATE tbl_celebridades SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:admincelebridade.php');
+    }
+
+    function deleteCelebridadeBanco($id){
+        $sql = "DELETE FROM tbl_celebridades WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:admincelebridade.php');
+    }
+
+    function selectCelebridadeBanco($id){
+        $sql = "SELECT * from tbl_celebridades WHERE id=" . $id;
         
         return mysqli_query(conexaoDb(), $sql);
     }
-    
+
+    function insertCelebridadeBanco($nome, $sobre, $imagem){
+        $sql = "INSERT INTO tbl_celebridades
+                    (nome, sobre, imagem, ativo)
+                    VALUES
+                    ('".$nome."', '".$sobre."', '".$imagem."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    function updateCelebridadeBanco($nome, $sobre, $imagem, $id){
+        $sql = "UPDATE tbl_celebridades SET nome = '". $nome ."', sobre = '". $sobre ."', imagem = '". $imagem ."'  WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    //Sobre banca
+    function selectSobresBanco(){
+        $sql = "SELECT * from tbl_sobre";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function ativarSobreBanco($id){
+        $sql = "UPDATE tbl_sobre SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsobre.php');
+    }
+
+    function desativarSobreBanco($id){
+        $sql = "UPDATE tbl_sobre SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsobre.php');
+    }
+
+    function deleteSobreBanco($id){
+        $sql = "DELETE FROM tbl_sobre WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsobre.php');
+    }
+
+    function selectSobreBanco($id){
+        $sql = "SELECT * from tbl_sobre WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function insertSobreBanco($nome, $sobre){
+        $sql = "INSERT INTO tbl_sobre
+                    (nome, sobre, ativo)
+                    VALUES
+                    ('".$nome."', '".$sobre."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+
+    function updateSobreBanco($nome, $sobre, $id){
+        $sql = "UPDATE tbl_sobre SET nome = '". $nome ."', sobre = '". $sobre ."'  WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+    }
 ?>

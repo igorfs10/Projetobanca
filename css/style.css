@@ -258,9 +258,9 @@
     float: left;
 }
 
-#sobre{
+.sobre{
     width: 978px;
-    height: 978px;
+    height: 200px;
     padding: 10px;
     border: 1px solid #c6a700;
 }

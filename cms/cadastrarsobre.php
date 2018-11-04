@@ -4,24 +4,36 @@
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
+	
+    $botao = "Inserir";
+    $nome = "";
+    $sobre = "";
 
-    $select = selectCelebridadesBanco();
+    if(isset($_POST["btnEnviar"])){
+        $acao = $_POST["btnEnviar"];
+        if($acao=="Inserir"){
+            $nome = $_POST["txtNome"];
+            $sobre = $_POST["txtSobre"];
+            insertSobreBanco($nome, $sobre);
+        }else if($acao=="Editar"){
+            $nome = $_POST["txtNome"];
+            $sobre = $_POST["txtSobre"];
+            $codigo = $_SESSION["codigo"];
+            updateSobreBanco($nome, $sobre, $codigo);
+        }        
+        header("Location: adminsobre.php");
+    }
+
     if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
-
-        if($modo == "apagar"){
-        $codigo = $_GET['codigo'];
-            deleteCelebridadeBanco($codigo);
-        }
-        
-        if($modo == "ativar"){
-        $codigo = $_GET['codigo'];
-            ativarCelebridadeBanco($codigo);
-        }
-        
-        if($modo == "desativar"){
-        $codigo = $_GET['codigo'];
-            desativarCelebridadeBanco($codigo);
+        if ($modo == "editar"){
+            $botao = "Editar";
+            $codigo = $_GET['codigo'];
+            $_SESSION["codigo"] = $codigo;
+            $select = selectSobreBanco($codigo);
+            $rsSobre = mysqli_fetch_array($select);
+            $nome = $rsSobre["nome"];
+            $sobre = $rsSobre["sobre"];
         }
     }
 ?>
@@ -71,36 +83,13 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=colunaConteudo>
-                    <a href="cadastrarcelebridade.php">
-                        <div class="caixaOpcao">
-                             &nbsp;&nbsp; Nova Celebridade
-                        </div>
-                    </a>
-                </div>
-                <div class=colunaConteudoContatoNivel>
-                    <?php
-                    while($rsCelebridades = mysqli_fetch_array($select)){
-                        $ativo = $rsCelebridades['ativo'];
-                    ?>
-                        <div class="usuarioNivel">
-                             <?php echo($rsCelebridades['nome'])?>
-                            <span class="direito"><a href="admincelebridade.php?modo=apagar&codigo=<?php echo($rsCelebridades['id'])?>"><img src="icones/delete.png"></a></span>
-                            <span class="direito"><a href="cadastrarcelebridade.php?modo=editar&codigo=<?php echo($rsCelebridades['id'])?>"><img src="icones/edit.png"></a></span>
-                            <?php
-                                if($ativo){
-                            ?>
-                            <span class="direito"><a href="admincelebridade.php?modo=desativar&codigo=<?php echo($rsCelebridades['id'])?>"><img src="icones/checked.png"></a></span>
-                            <?php
-                                }else{
-                            ?>
-                            <span class="direito"><a href="admincelebridade.php?modo=ativar&codigo=<?php echo($rsCelebridades['id'])?>"><img src="icones/unchecked.png"></a></span>
-                            <?php
-                                }
-                            ?>
-                        </div>
-                    <?php } ?>
-                </div>
+                <form id="frm"method="POST" action="cadastrarsobre.php">
+                    Nome:
+                    <input type="text" maxlength="100" value="<?php echo($nome) ?>"name="txtNome" required><br>
+                    Sobre:<br>
+                    <textarea rows="6" cols="70" name="txtSobre" maxlength="400" required><?php echo($sobre) ?></textarea><br>
+                    <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">
+                </form>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor
