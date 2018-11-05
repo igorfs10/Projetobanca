@@ -155,6 +155,33 @@ INSERT INTO `tbl_noticias` VALUES (1,'Hei','dasdasdasdasd adsasd','arquivos/3299
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbl_produtos`
+--
+
+DROP TABLE IF EXISTS `tbl_produtos`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbl_produtos` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(200) NOT NULL,
+  `descricao` varchar(200) NOT NULL,
+  `preco` float NOT NULL,
+  `desconto` float NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tbl_produtos`
+--
+
+LOCK TABLES `tbl_produtos` WRITE;
+/*!40000 ALTER TABLE `tbl_produtos` DISABLE KEYS */;
+INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',5,0),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1),(3,'Dom Casmurro','jsna ksajd kj',5,1),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0),(6,'Torre Negra','jsan kjasj kdank',8,0),(7,'O Nevoeiro','ksandahsj jhdshaj',10,2);
+/*!40000 ALTER TABLE `tbl_produtos` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tbl_sobre`
 --
 
@@ -219,4 +246,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-04 18:56:15
+-- Dump completed on 2018-11-05 11:15:22

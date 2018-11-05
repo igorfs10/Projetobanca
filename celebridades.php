@@ -77,11 +77,11 @@
                         $ativo = $rsCelebridades["ativo"];
                             if($ativo){
                     ?>
-                    <div id="caixaCelebridade">
-                        <div id="imagemCelebridade">
+                    <div class="caixaCelebridade">
+                        <div class="imagemCelebridade">
                             <img src="cms/<?php echo($rsCelebridades["imagem"])?>">
                         </div>
-                        <article id="textoCelebridade">
+                        <article class="textoCelebridade">
                             <h2><?php echo($rsCelebridades["nome"])?></h2>
                             <?php echo($rsCelebridades["sobre"])?>
                         </article>

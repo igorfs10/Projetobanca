@@ -1,3 +1,8 @@
+<?php
+    include_once "db.php";
+
+    $select = selectProdutos();
+?>
 <!doctype html>
 <html lang="pt-br">
 	<head>
@@ -66,98 +71,34 @@
                     <a href=""><div class="itemCategoria">Item1</div></a>
                     <a href=""><div class="itemCategoria">Item2</div></a>
                 </nav>
-                <div id="itens">
+				<div id="itens">
+				<?php
+                        while($rsProdutos = mysqli_fetch_array($select)){
+							if($rsProdutos["desconto"] > 0){
+								$class = "red";
+							}else{
+								$class = "";
+							}
+                    ?>
                     <div class="item">
                         <div class="itemDados">
                             <div class="itemImagem">
                                 <img src="imagens/livro.jpg" alt="Livro"><br>
                             </div>
                             <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
+                                Nome: <?php echo($rsProdutos["nome"])?><br>
+                                Descrição:<?php echo($rsProdutos["descricao"])?><br>
+                                Preço:<span class="<?php echo($class)?>"><?php echo($rsProdutos["preco"] - $rsProdutos["desconto"] . ",00")?></span><br>
                             </div>
                         </div>
                         <div class="itemDescricao">
                             Detalhes
                         </div>
                     </div>
-                    <div class="item">
-                        <div class="itemDados">
-                            <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
-                            </div>
-                            <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
-                            </div>
-                        </div>
-                        <div class="itemDescricao">
-                            Detalhes
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="itemDados">
-                            <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
-                            </div>
-                            <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
-                            </div>
-                        </div>
-                        <div class="itemDescricao">
-                            Detalhes
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="itemDados">
-                            <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
-                            </div>
-                            <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
-                            </div>
-                        </div>
-                        <div class="itemDescricao">
-                            Detalhes
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="itemDados">
-                            <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
-                            </div>
-                            <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
-                            </div>
-                        </div>
-                        <div class="itemDescricao">
-                            Detalhes
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="itemDados">
-                            <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
-                            </div>
-                            <div class="itemDetalhe">
-                                Nome:<br>
-                                Descrição:<br>
-                                Preço:<br>
-                            </div>
-                        </div>
-                        <div class="itemDescricao">
-                            Detalhes
-                        </div>
-                    </div>
-                </div>
+				<?php 
+                        }
+                    ?>
+				</div>
             </main>
             <footer id="rodape">
                 Todos os direitos reservados.

@@ -46,4 +46,16 @@
         
         return mysqli_query(conexaoDb(), $sql);
     }
+	
+	function selectProdutos(){
+		$sql = "SELECT * FROM tbl_produtos";
+		
+		return mysqli_query(conexaoDb(), $sql);
+	}
+	
+	function selectPromocoes(){
+		$sql = "SELECT * FROM tbl_produtos WHERE desconto > 0";
+		
+		return mysqli_query(conexaoDb(), $sql);
+	}
 ?>
