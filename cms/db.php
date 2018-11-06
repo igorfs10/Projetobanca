@@ -298,4 +298,22 @@
         $sql = "UPDATE tbl_sobre SET nome = '". $nome ."', sobre = '". $sobre ."'  WHERE id= " . $id;
         mysqli_query(conexaoDb(), $sql);
     }
+	
+	//Produtos
+	function selectProdutosBanco(){
+        $sql = "SELECT * from tbl_produtos";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+	
+	function updateProdutoBanco($desconto, $id){
+        $sql = "UPDATE tbl_produtos SET desconto = ". $desconto ." WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+    }
+	
+	function selectProdutoBanco($id){
+        $sql = "SELECT * from tbl_produtos WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
 ?>

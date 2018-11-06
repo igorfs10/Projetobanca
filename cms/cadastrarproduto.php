@@ -11,25 +11,21 @@
     $selected = "";
     $botao = "Inserir";
     $nome = "";
-    $senha = "";
-    $idNivel = "";
+	$preco = "";
+	$desconto = "";
 
     if(isset($_POST["btnEnviar"])){
         $acao = $_POST["btnEnviar"];
         if($acao=="Inserir"){
             $nome = $_POST["txtNome"];
-            $senha = $_POST["txtSenha"];
-            $idNivel = $_POST["cbbNivel"];
-        
+
             insertUsuarioBanco($nome, $senha, $idNivel);
         }else if($acao=="Editar"){
-            $nome = $_POST["txtNome"];
-            $senha = $_POST["txtSenha"];
-            $idNivel = $_POST["cbbNivel"];
+            $desconto = $_POST["txtDesconto"];
             $codigo = $_SESSION["codigo"];
-            updateUsuarioBanco($nome, $senha, $idNivel, $codigo);
+            updateProdutoBanco($desconto, $codigo);
         }        
-        header("Location: adminusuario.php");
+        header("Location: produtos.php");
     }
     
     if(isset($_GET['modo'])){
@@ -38,15 +34,13 @@
             $botao = "Editar";
             $codigo = $_GET['codigo'];
             $_SESSION["codigo"] = $codigo;
-            $select = selectUsuarioBanco($codigo);
-            $rsUsuario = mysqli_fetch_array($select);
-            $nome = $rsUsuario["nome"];
-            $senha = $rsUsuario["senha"];
-            $idNivel = $rsUsuario["id_nivel"];
+            $select = selectProdutoBanco($codigo);
+            $rsProduto = mysqli_fetch_array($select);
+            $nome = $rsProduto["nome"];
+			$preco = $rsProduto["preco"];
+            $desconto = $rsProduto["desconto"];
         }
-    }
-    
-    $selectNivel = selectNiveisBanco();
+    }    
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -94,28 +88,14 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <form method="POST" action="cadastrarusuario.php">
-                    Usuário:
-                    <input type="text" maxlength="15" name="txtNome" value="<?php echo($nome)?>" required>
-                    Senha:
-                    <input type="password" maxlength="10" name="txtSenha" value="<?php echo($senha)?>" required><br>
-                    Nível:
-                    <select name="cbbNivel" required>
-                        <option value="">Escolha uma opção</option>
-                        <?php
-                        while($rsNiveis = mysqli_fetch_array($selectNivel)){
-                            if($idNivel == $rsNiveis['id']){
-                                $selected = "selected";
-                            }else{
-                                $selected = "";
-                            }
-                        ?>
-                        <option value="<?php echo($rsNiveis['id'])?>"<?php echo($selected)?>><?php echo($rsNiveis['nome'])?></option>
-                        <?php
-                        }
-                        ?>
-                    </select>
+                <form method="POST" action="cadastrarproduto.php">
+					<span class="branco">
+                    Produto: <?php echo($nome)?><br>
+					Valor: R$<?php echo($preco)?>,00<br>
+                    Desconto:
+                    <input type="number" maxlength="5" min="0" max="<?php echo($preco - 1)?>"name="txtDesconto" value="<?php echo($desconto)?>" required>,00<br>
                     <input type="submit" value="<?php echo($botao)?>"name="btnEnviar">
+					</span>
                 </form>
             </div>
             <footer id="rodape">

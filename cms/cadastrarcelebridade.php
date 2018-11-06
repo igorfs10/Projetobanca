@@ -1,6 +1,9 @@
 <?php
     include_once "db.php";
 	session_start();
+	if(!(isset($_SESSION["idLogin"]))){
+		header("Location: ../index.php");
+	}
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
@@ -131,7 +134,7 @@
                     Nome:
                     <input type="text" maxlength="100" value="<?php echo($nome) ?>"name="txtNome" required><br>
                     Sobre:<br>
-                    <textarea rows="6" cols="70" name="txtSobre" maxlength="400" required><?php echo($sobre) ?></textarea><br>
+                    <textarea rows="6" cols="70" name="txtSobre" maxlength="1500" required><?php echo($sobre) ?></textarea><br>
                     <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">
                 </form>
             </div>

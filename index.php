@@ -76,8 +76,10 @@
                         while($rsProdutos = mysqli_fetch_array($select)){
 							if($rsProdutos["desconto"] > 0){
 								$class = "red";
+								$valorDoProduto = "<span class='traco'>R$" . $rsProdutos['preco'] .",00</span>";
 							}else{
 								$class = "";
+								$valorDoProduto = "";
 							}
                     ?>
                     <div class="item">
@@ -88,7 +90,7 @@
                             <div class="itemDetalhe">
                                 Nome: <?php echo($rsProdutos["nome"])?><br>
                                 Descrição:<?php echo($rsProdutos["descricao"])?><br>
-                                Preço:<span class="<?php echo($class)?>"><?php echo($rsProdutos["preco"] - $rsProdutos["desconto"] . ",00")?></span><br>
+                                Preço: R$<span class="<?php echo($class)?>"><?php echo($rsProdutos["preco"] - $rsProdutos["desconto"] . ",00")?></span><?php echo($valorDoProduto)?><br>
                             </div>
                         </div>
                         <div class="itemDescricao">

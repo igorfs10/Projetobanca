@@ -1,11 +1,14 @@
 <?php
-	include "db.php";
+    include_once "db.php";
 	session_start();
+	if(!(isset($_SESSION["idLogin"]))){
+		header("Location: ../index.php");
+	}
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
 
-	$select = selectBanco();
+    $select = selectProdutosBanco();
 
 ?>
 <!doctype html>
@@ -54,18 +57,23 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=caixaContato>
+                <div class=colunaConteudo>
+				<span class="branco">Os produtos que tem um valor maior que 0 de desconto aparecerá em vermelho ao lado e na sessão de promoção.</span>
+                </div>
+                <div class=colunaConteudoContatoNivel>
                     <?php
-                    while($rsContatos = mysqli_fetch_array($select)){
+                    while($rsProdutos = mysqli_fetch_array($select)){
+						if($rsProdutos['desconto'] > 0){
+							$promocao = "red";
+						}else{
+							$promocao = "";
+						}
                     ?>
-                    <div class="contato">
-                        Nome: <span class="textoNegrito"><?php echo($rsContatos['nome'])?></span>
-                        <span class="direito"><img src="icones/zoom.png"></span>
-                        <br>
-                        Email: <span class="textoNegrito"><?php echo($rsContatos['email'])?></span>
-                        <span class="direito"><img src="icones/delete.png"></span>
-                    </div>
-                      <?php } ?>
+                        <div class="usuarioNivel">
+                             <span class="<?php echo($promocao)?>"><?php echo($rsProdutos['nome'])?></span>
+                            <span class="direito"><a href="cadastrarproduto.php?modo=editar&codigo=<?php echo($rsProdutos['id'])?>"><img src="icones/edit.png"></a></span>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

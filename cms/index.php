@@ -2,6 +2,9 @@
     include_once "db.php";
     
     session_start();
+	if(!(isset($_SESSION["idLogin"]))){
+		header("Location: ../index.php");
+	}
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
