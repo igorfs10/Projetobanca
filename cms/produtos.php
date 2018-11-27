@@ -38,7 +38,7 @@
                         Admin Fale Conosco
                     </div>
                 </a>
-                <a href="adminprodutos.php">
+                <a href="produtos.php">
                     <div class="caixaItem">
                         <img src="icones/produtos.png"><br>
                         Admin Produtos
