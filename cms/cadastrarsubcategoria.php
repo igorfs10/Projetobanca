@@ -8,41 +8,41 @@
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
 	
+    $selected = "";
     $botao = "Inserir";
     $nome = "";
-    $telefone = "";
-    $endereco = "";
+    $idCategoria = "";
 
     if(isset($_POST["btnEnviar"])){
         $acao = $_POST["btnEnviar"];
         if($acao=="Inserir"){
             $nome = $_POST["txtNome"];
-            $telefone = $_POST["txtTelefone"];
-            $endereco = $_POST["txtEndereco"];
-            insertBancaBanco($nome, $telefone, $endereco);
+            $idCategoria = $_POST["cbbCategoria"];
+        
+            insertSubcategoriaBanco($nome, $idCategoria);
         }else if($acao=="Editar"){
             $nome = $_POST["txtNome"];
+            $idCategoria = $_POST["cbbCategoria"];
             $codigo = $_SESSION["codigo"];
-            $telefone = $_POST["txtTelefone"];
-            $endereco = $_POST["txtEndereco"];
-            updateBancaBanco($nome, $telefone, $endereco, $codigo);
-        }        
-        header("Location: adminbanca.php");
+            updateSubcategoriaBanco($nome, $idCategoria, $codigo);
+        }
+        header("Location: adminsubcategoria.php");
     }
-
+    
     if(isset($_GET['modo'])){
         $modo = $_GET['modo'];
         if ($modo == "editar"){
             $botao = "Editar";
             $codigo = $_GET['codigo'];
             $_SESSION["codigo"] = $codigo;
-            $select = selectBancaBanco($codigo);
-            $rsBanca = mysqli_fetch_array($select);
-            $nome = $rsBanca["nome"];
-            $telefone = $rsBanca["telefone"];
-            $endereco = $rsBanca["endereco"];
+            $select = selectSubcategoriaBanco($codigo);
+            $rsSubcategoria = mysqli_fetch_array($select);
+            $nome = $rsSubcategoria["nome"];
+            $idCategoria = $rsSubcategoria["id_categoria"];
         }
     }
+    
+    $selectCategoria = selectCategoriasBanco();
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -90,14 +90,26 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <form method="POST" action="cadastrarbanca.php">
-                    Nome:
-                    <input type="text" maxlength="60" value="<?php echo($nome) ?>"name="txtNome" required><br>
-                    Endereco:
-                    <input type="text" maxlength="90" value="<?php echo($endereco) ?>"name="txtEndereco" required><br>
-                    Telefone:
-                    <input type="text" maxlength="15" value="<?php echo($telefone) ?>"name="txtTelefone" required><br>
-                    <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">
+                <form method="POST" action="cadastrarSubcategoria.php">
+                    Subcategoria:
+                    <input type="text" maxlength="20" name="txtNome" value="<?php echo($nome)?>" required>
+                    Categoria:
+                    <select name="cbbCategoria" required>
+                        <option value="">Escolha uma opção</option>
+                        <?php
+                        while($rsCategorias = mysqli_fetch_array($selectCategoria)){
+                            if($idCategoria == $rsCategorias['id']){
+                                $selected = "selected";
+                            }else{
+                                $selected = "";
+                            }
+                        ?>
+                        <option value="<?php echo($rsCategorias['id'])?>"<?php echo($selected)?>><?php echo($rsCategorias['nome'])?></option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <input type="submit" value="<?php echo($botao)?>"name="btnEnviar">
                 </form>
             </div>
             <footer id="rodape">

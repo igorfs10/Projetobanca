@@ -316,4 +316,110 @@
         
         return mysqli_query(conexaoDb(), $sql);
     }
+    
+    function ativarProdutoBanco($id){
+        $sql = "UPDATE tbl_produtos SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminproduto.php');
+    }
+
+    function desativarProdutoBanco($id){
+        $sql = "UPDATE tbl_produtos SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminproduto.php');
+    }
+
+     //Categorias
+    function selectCategoriasBanco(){
+        $sql = "SELECT * from tbl_categorias";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function selectCategoriaBanco($id){
+        $sql = "SELECT * from tbl_categorias WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+
+    function insertCategoriaBanco($nome){
+        $sql = "INSERT INTO tbl_categorias
+                    (nome, ativo)
+                    VALUES
+                    ('".$nome."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+    
+    function updateCategoriaBanco($nome, $id){
+        $sql = "UPDATE tbl_categorias SET nome = '". $nome ."' WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        
+    }
+    
+    function deleteCategoriaBanco($id){
+        $sql = "DELETE FROM tbl_categorias WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:admincategoria.php');
+    }
+
+    function ativarCategoriaBanco($id){
+        $sql = "UPDATE tbl_categorias SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:admincategoria.php');
+    }
+
+    function desativarCategoriaBanco($id){
+        $sql = "UPDATE tbl_categorias SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:admincategoria.php');
+    }
+
+    //Subcategorias
+    function selectSubcategoriasBanco(){
+        $sql = "SELECT * from tbl_subcategorias";
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function selectSubcategoriaBanco($id){
+        $sql = "SELECT * from tbl_subcategorias WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+
+    function insertSubcategoriaBanco($nome, $idCategoria){
+        $sql = "INSERT INTO tbl_subcategorias
+                    (nome, id_categoria, ativo)
+                    VALUES
+                    ('".$nome."', '".$idCategoria."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+    
+    function updateSubcategoriaBanco($nome, $idCategoria, $id){
+        $sql = "UPDATE tbl_subcategorias SET nome = '". $nome ."', id_categoria = '". $idCategoria ."' WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        
+    }
+    
+    function deleteSubcategoriaBanco($id){
+        $sql = "DELETE FROM tbl_subcategorias WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsubcategoria.php');
+    }
+
+    function ativarSubcategoriaBanco($id){
+        $sql = "UPDATE tbl_subcategorias SET ativo = 1 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsubcategoria.php');
+    }
+
+    function desativarSubcategoriaBanco($id){
+        $sql = "UPDATE tbl_subcategorias SET ativo = 0 WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminsubcategoria.php');
+    }
 ?>

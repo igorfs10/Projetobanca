@@ -68,8 +68,29 @@
                     <div><img src="imagens/4.jpg" alt="Banner"></div>
                 </div>
                 <nav id="categorias">
-                    <a href=""><div class="itemCategoria">Item1</div></a>
-                    <a href=""><div class="itemCategoria">Item2</div></a>
+                    <div class="itemCategoria">
+                        <a href="">Item1</a>
+                        <div class="dropdown">
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                        </div>
+                    </div>
+                    <div class="itemCategoria">
+                        <a href="">Item1</a>
+                        <div class="dropdown">
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                        </div>
+                    </div><div class="itemCategoria">
+                        <a href="">Item1</a>
+                        <div class="dropdown">
+                            <a href="">Item1</a>
+                            <a href="">Item1</a>
+                        </div>
+                    </div>
                 </nav>
 				<div id="itens">
 				<?php

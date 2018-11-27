@@ -26,7 +26,7 @@
 		<title>
             CMS - Sistema De Gerenciamento De Site
 		</title>
-        <script src="js/jquery.js"></script>
+        <script src="js/jquery.min.js"></script>
         <script>
             $(document).ready(function(){
 

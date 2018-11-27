@@ -1,7 +1,6 @@
 <?php
     include_once "db.php";
-    
-    session_start();
+	session_start();
 	if(!(isset($_SESSION["idLogin"]))){
 		header("Location: ../index.php");
 	}
@@ -9,6 +8,25 @@
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
 
+    $select = selectCategoriasBanco();
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+
+        if($modo == "apagar"){
+        $codigo = $_GET['codigo'];
+            deleteCategoriaBanco($codigo);
+        }
+        
+        if($modo == "ativar"){
+        $codigo = $_GET['codigo'];
+            ativarCategoriaBanco($codigo);
+        }
+        
+        if($modo == "desativar"){
+        $codigo = $_GET['codigo'];
+            desativarCategoriaBanco($codigo);
+        }
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -38,7 +56,7 @@
                         Admin Fale Conosco
                     </div>
                 </a>
-                <a href="adminprodutos.php">
+                <a href="produtos.php">
                     <div class="caixaItem">
                         <img src="icones/produtos.png"><br>
                         Admin Produtos
@@ -57,26 +75,35 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-                    <a href="adminproduto.php">
+                    <a href="cadastrarcategoria.php">
                         <div class="caixaOpcao">
                             <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Produtos
-                        </div>
-                    </a>
-                    <a href="admincategoria.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Categoria
-                        </div>
-                    </a>
-                    <a href="adminsubcategoria.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Subcategoria
+                             Nova Categoria
                         </div>
                     </a>
                 </div>
-                <div class=colunaConteudo>
+                <div class=colunaConteudoContatoNivel>
+                    <?php
+                    while($rsCategorias = mysqli_fetch_array($select)){
+                        $ativo = $rsCategorias['ativo'];
+                    ?>
+                        <div class="usuarioNivel">
+                             <?php echo($rsCategorias['nome'])?>
+                            <span class="direito"><a href="admincategoria.php?modo=apagar&codigo=<?php echo($rsCategorias['id'])?>"><img src="icones/delete.png"></a></span>
+                            <span class="direito"><a href="cadastrarcategoria.php?modo=editar&codigo=<?php echo($rsCategorias['id'])?>"><img src="icones/edit.png"></a></span>
+                            <?php
+                                if($ativo){
+                            ?>
+                            <span class="direito"><a href="admincategoria.php?modo=desativar&codigo=<?php echo($rsCategorias['id'])?>"><img src="icones/checked.png"></a></span>
+                            <?php
+                                }else{
+                            ?>
+                            <span class="direito"><a href="admincategoria.php?modo=ativar&codigo=<?php echo($rsCategorias['id'])?>"><img src="icones/unchecked.png"></a></span>
+                            <?php
+                                }
+                            ?>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
             <footer id="rodape">

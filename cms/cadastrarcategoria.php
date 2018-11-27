@@ -1,14 +1,40 @@
 <?php
     include_once "db.php";
-    
-    session_start();
+	session_start();
 	if(!(isset($_SESSION["idLogin"]))){
 		header("Location: ../index.php");
 	}
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
+	
+    $botao = "Inserir";
+    $nome = "";
 
+    if(isset($_POST["btnEnviar"])){
+        $acao = $_POST["btnEnviar"];
+        if($acao=="Inserir"){
+            $nome = $_POST["txtNome"];
+            insertCategoriaBanco($nome);
+        }else if($acao=="Editar"){
+            $nome = $_POST["txtNome"];
+            $codigo = $_SESSION["codigo"];
+            updateCategoriaBanco($nome, $codigo);
+        }        
+        header("Location: admincategoria.php");
+    }
+
+    if(isset($_GET['modo'])){
+        $modo = $_GET['modo'];
+        if ($modo == "editar"){
+            $botao = "Editar";
+            $codigo = $_GET['codigo'];
+            $_SESSION["codigo"] = $codigo;
+            $select = selectCategoriaBanco($codigo);
+            $rsCategoria = mysqli_fetch_array($select);
+            $nome = $rsCategoria["nome"];
+        }
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -38,7 +64,7 @@
                         Admin Fale Conosco
                     </div>
                 </a>
-                <a href="adminprodutos.php">
+                <a href="produtos.php">
                     <div class="caixaItem">
                         <img src="icones/produtos.png"><br>
                         Admin Produtos
@@ -56,28 +82,11 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <div class=colunaConteudo>
-                    <a href="adminproduto.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Produtos
-                        </div>
-                    </a>
-                    <a href="admincategoria.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Categoria
-                        </div>
-                    </a>
-                    <a href="adminsubcategoria.php">
-                        <div class="caixaOpcao">
-                            <div class="imagemOpcao"><img src="icones/config.png"></div>
-                            Subcategoria
-                        </div>
-                    </a>
-                </div>
-                <div class=colunaConteudo>
-                </div>
+                <form method="POST" action="cadastrarcategoria.php">
+                    Categoria:
+                    <input type="text" maxlength="15" value="<?php echo($nome) ?>"name="txtNome" required>
+                    <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">
+                </form>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor

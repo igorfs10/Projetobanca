@@ -153,11 +153,41 @@
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
+    text-decoration: none;
+    position: relative;
+}
+
+.itemCategoria a{
+    text-decoration: none;
+    color: black;
+    display: block;
 }
 
 .itemCategoria:hover{
     background-color: #c6a700;
     cursor: pointer;
+}
+
+.dropdown{
+    display: none;
+    top: 0px;
+    left: 160px;
+    position: absolute;
+    background-color: #ffee58;
+    min-width: 160px;
+    border-radius: 10px;
+    text-align: center;
+    z-index: 1;
+    border: 2px solid #c6a700;
+}
+
+.dropdown a:hover{
+    border-radius: 7px;
+    background-color: #c6a700;
+}
+
+.itemCategoria:hover .dropdown{
+    display: block;
 }
 
 #itens{
