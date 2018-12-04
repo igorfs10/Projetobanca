@@ -300,14 +300,23 @@
     }
 	
 	//Produtos
+    function insertProdutoBanco($nome, $sobre, $preco, $desconto, $idSub, $imagem){
+        $sql = "INSERT INTO tbl_produtos
+                    (nome, sobre, preco, desconto, id_subcategoria , imagem, ativo)
+                    VALUES
+                    ('".$nome."', '".$sobre."', '".$preco."', '".$desconto."', '".$idSub."', '".$imagem."', 1);";
+
+        mysqli_query(conexaoDb(), $sql);
+    }
+    
 	function selectProdutosBanco(){
         $sql = "SELECT * from tbl_produtos";
         
         return mysqli_query(conexaoDb(), $sql);
     }
 	
-	function updateProdutoBanco($desconto, $id){
-        $sql = "UPDATE tbl_produtos SET desconto = ". $desconto ." WHERE id= " . $id;
+	function updateProdutoBanco($nome, $sobre, $preco, $desconto, $idSub, $imagem, $id){
+        $sql = "UPDATE tbl_produtos SET nome = ". $nome .", sobre = '".$sobre."', preco = '".$preco."', desconto = '".$desconto."', id_subcategoria = '".$idSub."', imagem = '".$imagem."' WHERE id= " . $id;
         mysqli_query(conexaoDb(), $sql);
     }
 	
@@ -385,6 +394,12 @@
 
     function selectSubcategoriaBanco($id){
         $sql = "SELECT * from tbl_subcategorias WHERE id=" . $id;
+        
+        return mysqli_query(conexaoDb(), $sql);
+    }
+
+    function selectSubcategoriasId($id){
+        $sql = "SELECT * from tbl_subcategorias WHERE id_categoria=" . $id;
         
         return mysqli_query(conexaoDb(), $sql);
     }

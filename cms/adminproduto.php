@@ -76,7 +76,7 @@
             </div>
             <div id="caixaConteudo">
                 <div class=colunaConteudo>
-				    <a href="cadastrarcelebridade.php">
+				    <a href="cadastrarproduto.php">
                         <div class="caixaOpcao">
                              &nbsp;&nbsp; Novo Produto
                         </div>
