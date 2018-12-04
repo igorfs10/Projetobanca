@@ -14,8 +14,8 @@
     $foto = "";
     $preco = "";
     $desconto = "";
-    $catEscolhido = "";
-    $subEscolhido = "";
+    $catEscolhido = 0;
+    $subEscolhido = 0;
 
     $selectCategorias = selectCategoriasBanco();
 
@@ -50,11 +50,15 @@
             $botao = "Editar";
             $codigo = $_GET['codigo'];
             $_SESSION["codigo"] = $codigo;
-            $select = selectCelebridadeBanco($codigo);
-            $rsCelebridade = mysqli_fetch_array($select);
-            $nome = $rsCelebridade["nome"];
-            $sobre = $rsCelebridade["sobre"];
-            $foto = $rsCelebridade["imagem"];
+            $select = selectProdutoBanco($codigo);
+            $rsProduto = mysqli_fetch_array($select);
+            $nome = $rsProduto["nome"];
+            $sobre = $rsProduto["sobre"];
+            $foto = $rsProduto["imagem"];
+            $subEscolhido = $rsProduto["id_subcategoria"];
+            $select = selectSubcategoriaBanco($subEscolhido);
+            $rsSub = mysqli_fetch_array($select);
+            $catEscolhido = $rsSub["id_categoria"];
         }
     }
 ?>
@@ -74,6 +78,8 @@
             sub[i] = new Array(500);
         }
         <?php
+            echo("let catE = ".$catEscolhido.";");
+            echo("let subE = ".$subEscolhido.";");
             while($rsCategorias = mysqli_fetch_array($selectCategorias)){
                 $idCat = $rsCategorias['id'];
                 $nomeCat = $rsCategorias['nome'];
@@ -214,6 +220,10 @@
             }
             preencherCat();
             preencherSub(0);
+            
+            if(catE){
+                
+            }
         </script>
     </body>
 </html>

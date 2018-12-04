@@ -190,14 +190,14 @@ DROP TABLE IF EXISTS `tbl_produtos`;
 CREATE TABLE `tbl_produtos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(200) NOT NULL,
-  `descricao` varchar(200) NOT NULL,
+  `sobre` varchar(200) NOT NULL,
   `preco` float NOT NULL,
   `desconto` float NOT NULL,
   `id_subcategoria` int(11) NOT NULL,
   `ativo` int(11) NOT NULL,
   `imagem` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +206,7 @@ CREATE TABLE `tbl_produtos` (
 
 LOCK TABLES `tbl_produtos` WRITE;
 /*!40000 ALTER TABLE `tbl_produtos` DISABLE KEYS */;
-INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',5,0,1,1,NULL),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1,1,0,NULL),(3,'Dom Casmurro','jsna ksajd kj',5,1,1,0,NULL),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,1,NULL),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,0,NULL),(6,'Torre Negra','jsan kjasj kdank',8,2,1,1,NULL),(7,'O Nevoeiro','ksandahsj jhdshaj',10,3,1,1,NULL);
+INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',5,0,1,0,NULL),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1,1,0,NULL),(3,'Dom Casmurro','jsna ksajd kj',5,1,1,0,NULL),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,0,NULL),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,0,NULL),(6,'Torre Negra','jsan kjasj kdank',8,2,1,0,NULL),(7,'O Nevoeiro','ksandahsj jhdshaj',10,3,1,0,NULL),(9,'Quiz','dasdasdasd',60,50,5,0,'arquivos/9e8b74b38c56c4a03d7315904151c696.png');
 /*!40000 ALTER TABLE `tbl_produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-27 10:57:29
+-- Dump completed on 2018-12-04 11:18:40
