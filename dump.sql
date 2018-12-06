@@ -64,7 +64,7 @@ CREATE TABLE `tbl_categorias` (
 
 LOCK TABLES `tbl_categorias` WRITE;
 /*!40000 ALTER TABLE `tbl_categorias` DISABLE KEYS */;
-INSERT INTO `tbl_categorias` VALUES (1,'Livros',1),(3,'HQ',1);
+INSERT INTO `tbl_categorias` VALUES (1,'Livros',1),(3,'Quadrinhos',1);
 /*!40000 ALTER TABLE `tbl_categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,7 +149,7 @@ CREATE TABLE `tbl_niveis` (
 
 LOCK TABLES `tbl_niveis` WRITE;
 /*!40000 ALTER TABLE `tbl_niveis` DISABLE KEYS */;
-INSERT INTO `tbl_niveis` VALUES (1,'Editor',1),(2,'Redator',1),(3,'Jogador',0),(7,'Operador',1),(10,'nivel do marcel',1);
+INSERT INTO `tbl_niveis` VALUES (1,'Administrador',1),(2,'Operador',1),(7,'Cataloguista',1),(10,'nivel do marcel',1);
 /*!40000 ALTER TABLE `tbl_niveis` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +197,7 @@ CREATE TABLE `tbl_produtos` (
   `ativo` int(11) NOT NULL,
   `imagem` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +206,7 @@ CREATE TABLE `tbl_produtos` (
 
 LOCK TABLES `tbl_produtos` WRITE;
 /*!40000 ALTER TABLE `tbl_produtos` DISABLE KEYS */;
-INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',5,0,1,0,NULL),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1,1,0,NULL),(3,'Dom Casmurro','jsna ksajd kj',5,1,1,0,NULL),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,0,NULL),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,0,NULL),(6,'Torre Negra','jsan kjasj kdank',8,2,1,0,NULL),(7,'O Nevoeiro','ksandahsj jhdshaj',10,3,1,0,NULL),(9,'Quiz','dasdasdasd',60,50,5,0,'arquivos/9e8b74b38c56c4a03d7315904151c696.png');
+INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',6,0,5,0,'arquivos/884467b4b76678ff79684f382ea839ba.jpg'),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1,1,0,NULL),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,0,NULL),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,0,NULL),(6,'Torre Negra','jsan kjasj kdank',8,2,1,0,NULL),(7,'O Nevoeiro','ksandahsj jhdshaj',10,3,1,0,NULL),(9,'Quiz','dasdasdasd',60,50,5,0,'arquivos/9e8b74b38c56c4a03d7315904151c696.png'),(10,'Dom Casmurro','jsna ksajd kj',5,2,4,1,'arquivos/f357e0fdc56506907576db0b54a75239.jpg');
 /*!40000 ALTER TABLE `tbl_produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -291,7 +291,7 @@ CREATE TABLE `tbl_usuarios` (
 
 LOCK TABLES `tbl_usuarios` WRITE;
 /*!40000 ALTER TABLE `tbl_usuarios` DISABLE KEYS */;
-INSERT INTO `tbl_usuarios` VALUES (1,'Igor','1234',1,1),(3,'Lara','1234',7,1),(4,'Operador','123',1,1),(5,'Julio','123456',2,1),(6,'marcelnt','123123',10,1);
+INSERT INTO `tbl_usuarios` VALUES (1,'Igor','1234',1,1),(3,'Lara','1234',7,1),(4,'Operador','1234',2,1),(5,'Julio','123456',2,1),(6,'marcelnt','123123',10,1);
 /*!40000 ALTER TABLE `tbl_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -304,4 +304,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-04 11:18:40
+-- Dump completed on 2018-12-06 11:13:59

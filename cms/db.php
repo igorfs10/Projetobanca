@@ -316,7 +316,7 @@
     }
 	
 	function updateProdutoBanco($nome, $sobre, $preco, $desconto, $idSub, $imagem, $id){
-        $sql = "UPDATE tbl_produtos SET nome = ". $nome .", sobre = '".$sobre."', preco = '".$preco."', desconto = '".$desconto."', id_subcategoria = '".$idSub."', imagem = '".$imagem."' WHERE id= " . $id;
+        $sql = "UPDATE tbl_produtos SET nome = '". $nome ."', sobre = '".$sobre."', preco = '".$preco."', desconto = '".$desconto."', id_subcategoria = '".$idSub."', imagem = '".$imagem."' WHERE id= " . $id;
         mysqli_query(conexaoDb(), $sql);
     }
 	
@@ -337,6 +337,14 @@
         mysqli_query(conexaoDb(), $sql);
         header('location:adminproduto.php');
     }
+
+    function deleteProdutoBanco($id){
+        $sql = "DELETE FROM tbl_produtos WHERE id= " . $id;
+        mysqli_query(conexaoDb(), $sql);
+        header('location:adminproduto.php');
+    }
+
+
 
      //Categorias
     function selectCategoriasBanco(){
@@ -437,4 +445,59 @@
         mysqli_query(conexaoDb(), $sql);
         header('location:adminsubcategoria.php');
     }
+	
+	function pegarItens($nivel){
+		if($nivel == "Administrador"){
+			echo('<a href="adminconteudo.php">
+                    <div class="caixaItem">
+                        <img src="icones/config.png"><br>
+                        Admin Conteudo
+                    </div>
+                </a>
+                <a href="faleconosco.php">
+                    <div class="caixaItem">
+                        <img src="icones/contato.png"><br>
+                        Admin Fale Conosco
+                    </div>
+                </a>
+                <a href="produtos.php">
+                    <div class="caixaItem">
+                        <img src="icones/produtos.png"><br>
+                        Admin Produtos
+                    </div>
+                </a>
+                <a href="usuarios.php">
+                    <div class="caixaItem">
+                        <img src="icones/admin.png"><br>
+                        Admin Usuarios
+                    </div>
+                </a>');
+		}else if ($nivel == "Cataloguista"){
+			echo('<a href="produtos.php">
+                    <div class="caixaItem">
+                        <img src="icones/produtos.png"><br>
+                        Admin Produtos
+                    </div>
+                </a>');
+		}else if ($nivel == "Operador"){
+			echo('<a href="adminconteudo.php">
+                    <div class="caixaItem">
+                        <img src="icones/config.png"><br>
+                        Admin Conteudo
+                    </div>
+                </a>
+                <a href="faleconosco.php">
+                    <div class="caixaItem">
+                        <img src="icones/contato.png"><br>
+                        Admin Fale Conosco
+                    </div>
+                </a>
+				<a href="usuarios.php">
+                    <div class="caixaItem">
+                        <img src="icones/admin.png"><br>
+                        Admin Usuarios
+                    </div>
+                </a>');
+		}
+	}
 ?>

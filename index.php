@@ -110,7 +110,7 @@
                             </div>
                             <div class="itemDetalhe">
                                 Nome: <?php echo($rsProdutos["nome"])?><br>
-                                Descrição:<?php echo($rsProdutos["descricao"])?><br>
+                                Descrição:<?php echo($rsProdutos["sobre"])?><br>
                                 Preço: R$<span class="<?php echo($class)?>"><?php echo($rsProdutos["preco"] - $rsProdutos["desconto"] . ",00")?></span><?php echo($valorDoProduto)?><br>
                             </div>
                         </div>

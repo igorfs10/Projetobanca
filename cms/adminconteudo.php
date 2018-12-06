@@ -12,34 +12,6 @@
     $selectNivelUsuario = selectNivelBanco($idNivelLogado);
     $rsNivelLogado = mysqli_fetch_array($selectNivelUsuario);
     $nivelLogado = $rsNivelLogado["nome"];
-	
-    $botao = "Inserir";
-    $nome = "";
-
-    if(isset($_POST["btnEnviar"])){
-        $acao = $_POST["btnEnviar"];
-        if($acao=="Inserir"){
-            $nome = $_POST["txtNome"];
-            insertCategoriaBanco($nome);
-        }else if($acao=="Editar"){
-            $nome = $_POST["txtNome"];
-            $codigo = $_SESSION["codigo"];
-            updateCategoriaBanco($nome, $codigo);
-        }        
-        header("Location: admincategoria.php");
-    }
-
-    if(isset($_GET['modo'])){
-        $modo = $_GET['modo'];
-        if ($modo == "editar"){
-            $botao = "Editar";
-            $codigo = $_GET['codigo'];
-            $_SESSION["codigo"] = $codigo;
-            $select = selectCategoriaBanco($codigo);
-            $rsCategoria = mysqli_fetch_array($select);
-            $nome = $rsCategoria["nome"];
-        }
-    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -64,11 +36,32 @@
                 </div>
             </div>
             <div id="caixaConteudo">
-                <form method="POST" action="cadastrarcategoria.php">
-                    Categoria:
-                    <input type="text" maxlength="15" value="<?php echo($nome) ?>"name="txtNome" required>
-                    <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">
-                </form>
+                <div class=colunaConteudo>
+                    <a href="adminsobre.php">
+                        <div class="caixaOpcao">
+                            <div class="imagemOpcao"><img src="icones/config.png"></div>
+                            Sobre
+                        </div>
+                    </a>
+                    <a href="adminbanca.php">
+                        <div class="caixaOpcao">
+                            <div class="imagemOpcao"><img src="icones/config.png"></div>
+                            Bancas
+                        </div>
+                    </a>
+                    <a href="adminnoticia.php">
+                        <div class="caixaOpcao">
+                            <div class="imagemOpcao"><img src="icones/config.png"></div>
+                            Notícias
+                        </div>
+                    </a>
+                    <a href="admincelebridade.php">
+                        <div class="caixaOpcao">
+                            <div class="imagemOpcao"><img src="icones/config.png"></div>
+                            Celebridades
+                        </div>
+                    </a>
+                </div>
             </div>
             <footer id="rodape">
                 Desenvolvido por Igor

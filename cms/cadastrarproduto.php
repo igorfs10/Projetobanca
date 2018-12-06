@@ -1,12 +1,17 @@
 <?php
     include_once "db.php";
-	session_start();
+    
+    session_start();
 	if(!(isset($_SESSION["idLogin"]))){
 		header("Location: ../index.php");
 	}
     $selectLogin = selectUsuarioBanco($_SESSION["idLogin"]);
     $rsLogado = mysqli_fetch_array($selectLogin);
     $nomeLogado = $rsLogado["nome"];
+    $idNivelLogado = $rsLogado["id_nivel"];
+    $selectNivelUsuario = selectNivelBanco($idNivelLogado);
+    $rsNivelLogado = mysqli_fetch_array($selectNivelUsuario);
+    $nivelLogado = $rsNivelLogado["nome"];
 	
     $botao = "Inserir";
     $nome = "";
@@ -39,7 +44,7 @@
             $desconto = $_POST["txtDesconto"];
             $catEscolhido = $_POST["cbbCat"];
             $subEscolhido = $_POST["cbbSub"];
-            insertProdutoBanco($nome, $sobre, $preco, $desconto, $subEscolhido, $foto);
+            updateProdutoBanco($nome, $sobre, $preco, $desconto, $subEscolhido, $foto, $codigo);
         }        
         header("Location: adminproduto.php");
     }
@@ -55,6 +60,8 @@
             $nome = $rsProduto["nome"];
             $sobre = $rsProduto["sobre"];
             $foto = $rsProduto["imagem"];
+            $preco = $rsProduto["preco"];
+            $desconto = $rsProduto["desconto"];
             $subEscolhido = $rsProduto["id_subcategoria"];
             $select = selectSubcategoriaBanco($subEscolhido);
             $rsSub = mysqli_fetch_array($select);
@@ -74,12 +81,18 @@
     <script>
         let cat = [];
         let sub = [];
+        let catE;
+        let subE;
+        let valE;
+        let desE;
         for(let i=0; i<500; i++) {
             sub[i] = new Array(500);
         }
         <?php
-            echo("let catE = ".$catEscolhido.";");
-            echo("let subE = ".$subEscolhido.";");
+            echo("catE = ".$catEscolhido.";");
+            echo("subE = ".$subEscolhido.";");
+            echo("valE = ".$preco.";");
+            echo("desE = ".$desconto.";");
             while($rsCategorias = mysqli_fetch_array($selectCategorias)){
                 $idCat = $rsCategorias['id'];
                 $nomeCat = $rsCategorias['nome'];
@@ -134,30 +147,7 @@
                 <div id="logo"><img src="icones/config.png"></div>
             </div>
             <div id="caixaOpcoes">
-                <a href="index.php">
-                    <div class="caixaItem">
-                        <img src="icones/config.png"><br>
-                        Admin Conteudo
-                    </div>
-                </a>
-                <a href="faleconosco.php">
-                    <div class="caixaItem">
-                        <img src="icones/contato.png"><br>
-                        Admin Fale Conosco
-                    </div>
-                </a>
-                <a href="produtos.php">
-                    <div class="caixaItem">
-                        <img src="icones/produtos.png"><br>
-                        Admin Produtos
-                    </div>
-                </a>
-                <a href="usuarios.php">
-                    <div class="caixaItem">
-                        <img src="icones/admin.png"><br>
-                        Admin Usuarios
-                    </div>
-                </a>
+                <?php pegarItens($nivelLogado); ?>
                 <div id="caixaUsuario">
                     Bem Vindo, <?php echo($nomeLogado)?>.<br><br><br><br>
                     <a href="../login.php?modo=logout"><span class="branco">Logout</span></a>
@@ -179,7 +169,7 @@
                     Nome:
                     <input type="text" maxlength="100" value="<?php echo($nome) ?>"name="txtNome" required>
                     Valor:
-                    <input type="number" max="1000" min="0" value="<?php echo($preco) ?>"name="txtPreco" onchange="limiteDesconto(this.value)"required>
+                    <input type="number" max="1000" min="0" value="<?php echo($preco) ?>"name="txtPreco" id="tPreco" onchange="limiteDesconto(this.value)"required>
                     Desconto:
                     <input type="number" max="0" min="0" value="<?php echo($desconto) ?>"name="txtDesconto" id="tDesconto" required>
                     <br>
@@ -222,7 +212,13 @@
             preencherSub(0);
             
             if(catE){
+                tPreco.value = valE;
+                limiteDesconto(valE);
+                tDesconto.value = desE;
                 
+                cbCat.value = catE;
+                preencherSub(catE);
+                cbSub.value = subE;
             }
         </script>
     </body>
