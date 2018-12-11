@@ -16,6 +16,46 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Temporary view structure for view `selectprodutoaleatorio`
+--
+
+DROP TABLE IF EXISTS `selectprodutoaleatorio`;
+/*!50001 DROP VIEW IF EXISTS `selectprodutoaleatorio`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `selectprodutoaleatorio` AS SELECT 
+ 1 AS `id`,
+ 1 AS `nome`,
+ 1 AS `sobre`,
+ 1 AS `preco`,
+ 1 AS `desconto`,
+ 1 AS `id_subcategoria`,
+ 1 AS `ativo`,
+ 1 AS `imagem`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `selectprodutosbanca`
+--
+
+DROP TABLE IF EXISTS `selectprodutosbanca`;
+/*!50001 DROP VIEW IF EXISTS `selectprodutosbanca`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `selectprodutosbanca` AS SELECT 
+ 1 AS `id`,
+ 1 AS `nome`,
+ 1 AS `sobre`,
+ 1 AS `preco`,
+ 1 AS `desconto`,
+ 1 AS `id_subcategoria`,
+ 1 AS `ativo`,
+ 1 AS `imagem`,
+ 1 AS `sub`,
+ 1 AS `cat`*/;
+SET character_set_client = @saved_cs_client;
+
+--
 -- Table structure for table `tbl_bancas`
 --
 
@@ -197,7 +237,7 @@ CREATE TABLE `tbl_produtos` (
   `ativo` int(11) NOT NULL,
   `imagem` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +246,7 @@ CREATE TABLE `tbl_produtos` (
 
 LOCK TABLES `tbl_produtos` WRITE;
 /*!40000 ALTER TABLE `tbl_produtos` DISABLE KEYS */;
-INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',6,0,5,0,'arquivos/884467b4b76678ff79684f382ea839ba.jpg'),(2,'Crepusculo','akmdsaj dasjk jskja n jkdnas',2,1,1,0,NULL),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,0,NULL),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,0,NULL),(6,'Torre Negra','jsan kjasj kdank',8,2,1,0,NULL),(7,'O Nevoeiro','ksandahsj jhdshaj',10,3,1,0,NULL),(9,'Quiz','dasdasdasd',60,50,5,0,'arquivos/9e8b74b38c56c4a03d7315904151c696.png'),(10,'Dom Casmurro','jsna ksajd kj',5,2,4,1,'arquivos/f357e0fdc56506907576db0b54a75239.jpg');
+INSERT INTO `tbl_produtos` VALUES (1,'Harry Potter','ha sjd jsha j ja j hajah djhas dj',6,0,5,1,'arquivos/884467b4b76678ff79684f382ea839ba.jpg'),(4,'Tomb Raider','uiasdushdiua sui sdhaiushd iuashdiu',7,3,1,1,'arquivos/95aa430fa81f9e502b6af7d3d33e29e2.jpg'),(5,'O Senhor Do Aneis','jdaijdasiuasiud',10,0,1,1,'arquivos/11338ddc0d0a85cba6533d3282b58eb1.jpg'),(6,'Torre Negra','jsan kjasj kdank',8,2,2,1,'arquivos/237e8e68fd33858697e4922428dc8597.jpg'),(7,'O Nevoeiro','dassadasdsasddsadassdadsa dssadasd asdasdas',10,3,1,1,'arquivos/0e5ad1449bb2ef2054590143c671c629.jpg'),(9,'Quiz','dasdasdasd',60,0,5,1,'arquivos/9e8b74b38c56c4a03d7315904151c696.png'),(10,'Dom Casmurro','jsna ksajd kj',5,2,4,1,'arquivos/f357e0fdc56506907576db0b54a75239.jpg'),(11,'O Pequeno Principe','Livrinhooooooo',1000,998,5,1,'arquivos/1db663a7f98261e028b7937894d4cedd.jpg');
 /*!40000 ALTER TABLE `tbl_produtos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -261,7 +301,7 @@ CREATE TABLE `tbl_subcategorias` (
 
 LOCK TABLES `tbl_subcategorias` WRITE;
 /*!40000 ALTER TABLE `tbl_subcategorias` DISABLE KEYS */;
-INSERT INTO `tbl_subcategorias` VALUES (1,'Terror',1,1),(2,'Acao',1,0),(4,'Ciencia',1,1),(5,'Aventura',3,1);
+INSERT INTO `tbl_subcategorias` VALUES (1,'Terror',1,1),(2,'Acao',1,1),(4,'Ciencia',1,1),(5,'Aventura',3,1);
 /*!40000 ALTER TABLE `tbl_subcategorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,6 +334,42 @@ LOCK TABLES `tbl_usuarios` WRITE;
 INSERT INTO `tbl_usuarios` VALUES (1,'Igor','1234',1,1),(3,'Lara','1234',7,1),(4,'Operador','1234',2,1),(5,'Julio','123456',2,1),(6,'marcelnt','123123',10,1);
 /*!40000 ALTER TABLE `tbl_usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Final view structure for view `selectprodutoaleatorio`
+--
+
+/*!50001 DROP VIEW IF EXISTS `selectprodutoaleatorio`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `selectprodutoaleatorio` AS select `produtos`.`id` AS `id`,`produtos`.`nome` AS `nome`,`produtos`.`sobre` AS `sobre`,`produtos`.`preco` AS `preco`,`produtos`.`desconto` AS `desconto`,`produtos`.`id_subcategoria` AS `id_subcategoria`,`produtos`.`ativo` AS `ativo`,`produtos`.`imagem` AS `imagem` from ((`tbl_produtos` `produtos` join `tbl_categorias` `categorias`) join `tbl_subcategorias` `subcategorias`) where ((`categorias`.`id` = `subcategorias`.`id_categoria`) and (`produtos`.`id_subcategoria` = `subcategorias`.`id`) and (`produtos`.`ativo` = 1) and (`categorias`.`ativo` = 1) and (`subcategorias`.`ativo` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `selectprodutosbanca`
+--
+
+/*!50001 DROP VIEW IF EXISTS `selectprodutosbanca`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `selectprodutosbanca` AS select `produtos`.`id` AS `id`,`produtos`.`nome` AS `nome`,`produtos`.`sobre` AS `sobre`,`produtos`.`preco` AS `preco`,`produtos`.`desconto` AS `desconto`,`produtos`.`id_subcategoria` AS `id_subcategoria`,`produtos`.`ativo` AS `ativo`,`produtos`.`imagem` AS `imagem`,`subcategorias`.`nome` AS `sub`,`categorias`.`nome` AS `cat` from ((`tbl_produtos` `produtos` join `tbl_categorias` `categorias`) join `tbl_subcategorias` `subcategorias`) where ((`categorias`.`id` = `subcategorias`.`id_categoria`) and (`produtos`.`id_subcategoria` = `subcategorias`.`id`) and (`produtos`.`ativo` = 1) and (`categorias`.`ativo` = 1) and (`subcategorias`.`ativo` = 1)) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -304,4 +380,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-12-06 11:13:59
+-- Dump completed on 2018-12-11 10:20:54

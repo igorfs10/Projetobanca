@@ -2,6 +2,15 @@
     include_once "db.php";
 
     $select = selectProdutos();
+    $selectCat = selectCategorias();
+    if(isset($_GET['categoria'])){
+        $categoria = $_GET['categoria'];
+        $select = selectProdutosCategoria($categoria);
+    }
+    if(isset($_GET['subcategoria'])){
+        $subCategoria = $_GET['subcategoria'];
+        $select = selectProdutosSubcategoria($subCategoria);
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -68,31 +77,23 @@
                     <div><img src="imagens/4.jpg" alt="Banner"></div>
                 </div>
                 <nav id="categorias">
+                    <?php
+                        while($rsCat = mysqli_fetch_array($selectCat)){
+                            $selectSub = selectSubcategorias($rsCat["id"]);
+                    ?>
                     <div class="itemCategoria">
-                        <a href="">Item1</a>
+                        <a href="index.php?categoria=<?php echo($rsCat["nome"])?>"><?php echo($rsCat["nome"])?></a>
                         <div class="dropdown">
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
+                            <?php
+                                while($rsSub = mysqli_fetch_array($selectSub)){
+                            ?>
+                            <a href="index.php?subcategoria=<?php echo($rsSub["nome"])?>"><?php echo($rsSub["nome"])?></a>
+                            <?php }?>
                         </div>
                     </div>
-                    <div class="itemCategoria">
-                        <a href="">Item1</a>
-                        <div class="dropdown">
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
-                        </div>
-                    </div><div class="itemCategoria">
-                        <a href="">Item1</a>
-                        <div class="dropdown">
-                            <a href="">Item1</a>
-                            <a href="">Item1</a>
-                        </div>
-                    </div>
+                    <?php }?>
                 </nav>
-				<div id="itens">
+				<div id="itens2">
 				<?php
                         while($rsProdutos = mysqli_fetch_array($select)){
 							if($rsProdutos["desconto"] > 0){
@@ -106,7 +107,7 @@
                     <div class="item">
                         <div class="itemDados">
                             <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
+                                <img src="cms/<?php echo($rsProdutos["imagem"])?>" alt="Livro"><br>
                             </div>
                             <div class="itemDetalhe">
                                 Nome: <?php echo($rsProdutos["nome"])?><br>

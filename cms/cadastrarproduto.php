@@ -17,8 +17,8 @@
     $nome = "";
     $sobre = "";
     $foto = "";
-    $preco = "";
-    $desconto = "";
+    $preco = 0;
+    $desconto = 0;
     $catEscolhido = 0;
     $subEscolhido = 0;
 
@@ -174,7 +174,7 @@
                     <input type="number" max="0" min="0" value="<?php echo($desconto) ?>"name="txtDesconto" id="tDesconto" required>
                     <br>
                     Descricao:<br>
-                    <textarea rows="5" cols="70" name="txtSobre" maxlength="100" required><?php echo($sobre) ?></textarea><br>
+                    <textarea rows="3" cols="50" name="txtSobre" maxlength="50" required><?php echo($sobre) ?></textarea><br>
                     <select name="cbbCat" id="cbCat" required onchange="preencherSub(this.value)"></select>
                     <select name="cbbSub" id="cbSub" required></select>
                     <input type="submit" value="<?php echo($botao) ?>" name="btnEnviar">

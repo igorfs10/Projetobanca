@@ -2,6 +2,15 @@
     include_once "db.php";
 
     $select = selectPromocoes();
+    $selectCat = selectCategorias();
+    if(isset($_GET['categoria'])){
+        $categoria = $_GET['categoria'];
+        $select = selectPromocoesCategoria($categoria);
+    }
+    if(isset($_GET['subcategoria'])){
+        $subCategoria = $_GET['subcategoria'];
+        $select = selectpromocoesSubcategoria($subCategoria);
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -68,10 +77,23 @@
                     <div><img src="imagens/4.jpg" alt="Banner"></div>
                 </div>
                 <nav id="categorias">
-                    <a href=""><div class="itemCategoria">Item1</div></a>
-                    <a href=""><div class="itemCategoria">Item2</div></a>
+                    <?php
+                        while($rsCat = mysqli_fetch_array($selectCat)){
+                            $selectSub = selectSubcategorias($rsCat["id"]);
+                    ?>
+                    <div class="itemCategoria">
+                        <a href="promocoes.php?categoria=<?php echo($rsCat["nome"])?>"><?php echo($rsCat["nome"])?></a>
+                        <div class="dropdown">
+                            <?php
+                                while($rsSub = mysqli_fetch_array($selectSub)){
+                            ?>
+                            <a href="promocoes.php?subcategoria=<?php echo($rsSub["nome"])?>"><?php echo($rsSub["nome"])?></a>
+                            <?php }?>
+                        </div>
+                    </div>
+                    <?php }?>
                 </nav>
-                <div id="itens">
+				<div id="itens2">
 				<?php
                         while($rsProdutos = mysqli_fetch_array($select)){
 							if($rsProdutos["desconto"] > 0){
@@ -85,11 +107,11 @@
                     <div class="item">
                         <div class="itemDados">
                             <div class="itemImagem">
-                                <img src="imagens/livro.jpg" alt="Livro"><br>
+                                <img src="cms/<?php echo($rsProdutos["imagem"])?>" alt="Livro"><br>
                             </div>
                             <div class="itemDetalhe">
                                 Nome: <?php echo($rsProdutos["nome"])?><br>
-                                Descrição:<?php echo($rsProdutos["descricao"])?><br>
+                                Descrição:<?php echo($rsProdutos["sobre"])?><br>
                                 Preço: R$<span class="<?php echo($class)?>"><?php echo($rsProdutos["preco"] - $rsProdutos["desconto"] . ",00")?></span><?php echo($valorDoProduto)?><br>
                             </div>
                         </div>
@@ -100,7 +122,7 @@
 				<?php 
                         }
                     ?>
-                </div>
+				</div>
             </main>
             <footer id="rodape">
                 Todos os direitos reservados.

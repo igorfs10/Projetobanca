@@ -83,10 +83,6 @@
                     <div><img src="imagens/3.jpg" alt="Banner"></div>
                     <div><img src="imagens/4.jpg" alt="Banner"></div>
                 </div>
-                <nav id="categorias">
-                    <a href=""><div class="itemCategoria">Item1</div></a>
-                    <a href=""><div class="itemCategoria">Item2</div></a>
-                </nav>
                 <div id="itens">
                     <div id="areaContato">
                         <form method="POST" action="contato.php">
