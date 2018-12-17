@@ -88,6 +88,12 @@
         		
 		return mysqli_query(conexaoDb(), $sql);
     }
+	
+	function buscaProduto($nome){
+		$sql = "SELECT * FROM tbl_produtos WHERE nome LIKE '%".$nome."%'";
+		
+		return mysqli_query(conexaoDb(), $sql);
+	}
 
     function selectPromocoesSubcategoria($subCategoria){
         $sql = "SELECT * FROM selectProdutosBanca WHERE desconto > 0 AND sub = '".$subCategoria."'";

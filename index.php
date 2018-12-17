@@ -11,6 +11,10 @@
         $subCategoria = $_GET['subcategoria'];
         $select = selectProdutosSubcategoria($subCategoria);
     }
+	if(isset($_GET['txtBusca'])){
+        $busca = $_GET['txtBusca'];
+        $select = buscaProduto($busca);
+    }
 ?>
 <!doctype html>
 <html lang="pt-br">
@@ -77,6 +81,10 @@
                     <div><img src="imagens/4.jpg" alt="Banner"></div>
                 </div>
                 <nav id="categorias">
+					<form method="GET" action="index.php">
+						<p align="center"><input type="text" name="txtBusca" style="width: 100px;">
+						<input type="submit" name="buscaProduto" value="Buscar"></p><br>
+					</form>
                     <?php
                         while($rsCat = mysqli_fetch_array($selectCat)){
                             $selectSub = selectSubcategorias($rsCat["id"]);
